@@ -311,6 +311,8 @@
                                                         <p>... Robert Downey Jr.</p>
                                                     </div>
                                                 </div>
+<<<<<<< HEAD
+=======
                                                 <div class="title-hd-sm">
                                                     <h4>User reviews</h4>
                                                     <a href="#" class="time">See All 56 Reviews
@@ -318,6 +320,7 @@
                                                 </div>
                                                 <!-- movie user review -->
                                                 
+>>>>>>> f46df5dfd6137682fd6f67aba650c8faf1935ca8
                                             </div>
                                             <div class="col-md-4 col-xs-12 col-sm-12">
                                                 <div class="sb-it">
