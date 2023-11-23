@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -173,7 +174,7 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                                     </div>
                                                     <label>Film</label>
                                                     <div class="form-group">
@@ -263,7 +264,7 @@
                                             </div>
                                             <label>Deskripsi:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+                                            <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                             </div>
                                             <label>Film</label>
                                             <div class="form-group">
@@ -300,7 +301,7 @@
         <!-- Need: Apexcharts -->
         <script src="dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
         <script src="dist/assets/js/pages/dashboard.js"></script>
-
+        
 </body>
 
 </html>
