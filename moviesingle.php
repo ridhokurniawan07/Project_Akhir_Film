@@ -591,7 +591,7 @@
         <div class="ft-copyright">
             <div class="ft-left">
                 <p>
-                    <a target="_blank" href="https://www.templateshub.net">Templates Hub</a>
+                    <a target="_blank" href="https://www.templateshub.net">Templates Hubb</a>
                 </p>
             </div>
             <div class="backtotop">
