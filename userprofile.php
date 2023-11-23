@@ -200,22 +200,19 @@
 				<div class="user-information">
 					<div class="user-img">
 						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
-						
+						<a href="#" class="redbtn">Change avatar</a>
 					</div>
 					<div class="user-fav">
 						<p>Account Details</p>
 						<ul>
 							<li  class="active"><a href="userprofile.html">Profile</a></li>
-							
-						</ul>
 					</div>
-					
 				</div>
 			</div>
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="form-style-1 user-pro" action="#">
 					<form action="#" class="user">
-						<h4>Profile details</h4>
+						<h4>01. Profile details</h4>
 						<div class="row">
 							<div class="col-md-6 form-it">
 								<label>Username</label>
@@ -226,13 +223,34 @@
 								<input type="text" placeholder="edward@kennedy.com">
 							</div>
 						</div>
+						
 						<div class="row">
-							<!-- <div class="col-md-2">
+							<div class="col-md-2">
 								<input class="submit" type="submit" value="save">
-							</div> -->
+							</div>
 						</div>	
 					</form>
-					
+					<form action="#" class="password">
+						<h4>02. Change password</h4>
+						
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>New Password</label>
+								<input type="text" placeholder="***************">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 form-it">
+								<label>Confirm New Password</label>
+								<input type="text" placeholder="*************** ">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<input class="submit" type="submit" value="change">
+							</div>
+						</div>	
+					</form>
 				</div>
 			</div>
 		</div>

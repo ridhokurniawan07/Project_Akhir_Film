@@ -306,7 +306,7 @@
 	</div>
 </div>
 
-<!-- <div class="trailers">
+<div class="trailers">
 	<div class="container">
 		<div class="row ipad-width">
 			<div class="col-md-12">
@@ -352,7 +352,7 @@
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
 
 
 <!-- footer section-->

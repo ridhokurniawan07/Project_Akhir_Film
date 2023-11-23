@@ -71,11 +71,11 @@
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-stack"></i>
-                                <span>Data Kategori</span>
+                                <span>Data Genre</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="datakategori.php">Kategori</a>
+                                    <a href="datagenre.php">Genre</a>
                                 </li>
 
                             </ul>
@@ -173,7 +173,7 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <input type="textarea" name="" placeholder="" class="form-control">
                                                     </div>
                                                     <label>Film</label>
                                                     <div class="form-group">
