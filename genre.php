@@ -35,7 +35,6 @@ include_once'./components/layer/header_page.php';
 						<li><a href="#tab2"> Comedy</a></li>
 						<li><a href="#tab3">  Romance </a></li>
 					</ul>
-          <br>
 				    <div class="tab-content">
 				        <div id="tab1" class="tab active">
 				            <div class="row">
@@ -45,6 +44,48 @@ include_once'./components/layer/header_page.php';
 					            			<div class="mv-img">
 					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
 					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
@@ -74,6 +115,48 @@ include_once'./components/layer/header_page.php';
 					            			</div>
 					            		</div>
 				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item5.jpg" alt="" width="185" height="284">
+					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
 				            	</div>
 				            </div>
 				        </div>
@@ -85,6 +168,48 @@ include_once'./components/layer/header_page.php';
 					            			<div class="mv-img">
 					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
 					            			</div>
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div> 
+					            			<div class="hvr-inner">
+					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
+					            			</div>
+					            			<div class="title-in">
+					            				<h6><a href="#">Interstellar</a></h6>
+					            				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
+					            			</div>
+					            		</div>
+				            		</div>
+									<div class="slide-it">
+				            			<div class="movie-item">
+					            			<div class="mv-img">
+					            				<img src="images/uploads/mv-item1.jpg" alt="" width="185" height="284">
+					            			</div> 
 					            			<div class="hvr-inner">
 					            				<a  href="moviesingle.php"> Read more <i class="ion-android-arrow-dropright"></i> </a>
 					            			</div>
