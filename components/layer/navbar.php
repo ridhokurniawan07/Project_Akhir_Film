@@ -18,13 +18,13 @@
             <a href="#page-top"></a>
         </li>
         <li class="dropdown first">
-            <a class="btn btn-default dropdown-toggle lv1" href="index.php"> Home </a>
+            <a class="btn btn-default dropdown-toggle lv1" href=""> Home </a>
         </li>
         <li class="dropdown first">
-            <a class="btn btn-default dropdown-toggle lv1" href="moviegrid.php"> movies </a>
+            <a class="btn btn-default dropdown-toggle lv1" href=""> movies </a>
         </li>
         <li class="dropdown first">
-            <a class="btn btn-default dropdown-toggle lv1" href="celebritygrid01.php"> Actrees </a>
+            <a class="btn btn-default dropdown-toggle lv1" href=""> Actrees </a>
         </li>
         <li class="dropdown first">
         <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown"> Genre <i class="fa fa-angle-down" aria-hidden="true"></i> </a>
