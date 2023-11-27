@@ -173,11 +173,7 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-                                                        <input type="textarea" name="" placeholder="" class="form-control">
-                                                    </div>
-                                                    <label>Film</label>
-                                                    <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <textarea name="" placeholder="" class="form-control" required></textarea>
                                                     </div>
                                                     <label>Unggah Gambar:</label>
                                                     <div class="form-group">
@@ -212,14 +208,12 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Negara</th>
                                             <th>Deskripsi</th>
-                                            <th>Film</th>
                                             <th>Foto</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -263,11 +257,7 @@
                                             </div>
                                             <label>Deskripsi:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
-                                            </div>
-                                            <label>Film</label>
-                                            <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+                                                <textarea name="" placeholder="" class="form-control" required></textarea>
                                             </div>
                                             <label>Unggah Gambar:</label>
                                             <div class="form-group">

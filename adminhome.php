@@ -78,7 +78,7 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="datafilm.php.php">Film</a>
+                                    <a href="datafilm.php">Film</a>
                                 </li>
                             </ul>
                         </li>
