@@ -1,3 +1,9 @@
+<?php
+session_start();
+$isLoggedIn = isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true;
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+
+?>
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7 no-js" lang="en-US">
@@ -200,13 +206,25 @@
                         <li class="dropdown first">
                             <a href="genre.php"> Genre </a>
                         </li>
-                        <li class="dropdown first">
-                            <a href="userprofile.php"> User Profile </a>
-                        </li>
+                        <?php
+                        // Tampilkan tautan "User Profile" hanya jika pengguna sudah login
+                        if ($isLoggedIn) {
+                            echo '<li class="dropdown first"><a href="userprofile.php"> User Profile </a></li>';
+                        }
+                        ?>
                     </ul>
                     <ul class="nav navbar-nav flex-child-menu menu-right">
-                        <!-- <li class="loginLink"><a href="#">LOG In</a></li> -->
-                        <li class="btn signupLink"><a href="#">Logout</a></li>
+                        <?php
+                        // Tampilkan tombol "Logout" hanya jika pengguna sudah login
+                        if ($isLoggedIn) {
+                            echo '<li class="" style="background-color: #dd003f;
+							color: #ffffff;
+							padding: 11px 25px;
+							-webkit-border-radius: 20px;
+							-moz-border-radius: 20px;
+							border-radius: 20px;"><a href="logout.php">Logout</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -390,7 +408,7 @@
                                                     <h3>Related Movies To</h3>
                                                     <h2>Skyfall: Quantum of Spectre</h2>
                                                 </div>
-                                                <a href="#" id="write-review-btn" class="redbtn">Write Review</a>
+                                                <a href="#" id="write-review-btn" class="redbtn" style="margin-right: 20px;" onclick="checkLogin()">Write Review</a>
                                             </div>
                                             <div class="topbar-filter">
                                                 <p>Found <span>56 reviews</span> in total</p>
@@ -563,23 +581,31 @@
     </footer>
     <!-- end of footer section-->
     <script>
-        // Fungsi untuk membuka modal review
+        // Fungsi untuk membuka modal review jika pengguna sudah login
         function openWriteReviewModal() {
-            document.getElementById("write-review-modal").style.display = "flex";
+            // Periksa status login
+            var isLoggedIn = <?php echo json_encode($isLoggedIn); ?>;
+
+            if (isLoggedIn) {
+                document.getElementById("write-review-modal").style.display = "flex";
+            } else {
+                // Jika belum login, tampilkan pesan alert
+                alert("Silakan login terlebih dahulu.");
+            }
         }
+
         // Fungsi untuk menutup modal review
         function closeWriteReviewModal() {
             document.getElementById("write-review-modal").style.display = "none";
         }
+
         // Event listener untuk membuka modal saat tombol Write Review diklik
-        document
-            .getElementById("write-review-btn")
-            .addEventListener("click", openWriteReviewModal);
+        document.getElementById("write-review-btn").addEventListener("click", openWriteReviewModal);
+
         // Event listener untuk menutup modal saat tombol Close diklik
-        document
-            .getElementById("close-write-review")
-            .addEventListener("click", closeWriteReviewModal);
+        document.getElementById("close-write-review").addEventListener("click", closeWriteReviewModal);
     </script>
+
     <script src="js/jquery.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/plugins2.js"></script>

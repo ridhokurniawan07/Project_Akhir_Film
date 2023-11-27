@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Admin</title>
+    <link rel="stylesheet" href="dist/assets/extensions/choices.js/public/assets/styles/choices.css">
+
 
     <link rel="stylesheet" href="dist/assets/css/main/app.css">
     <link rel="stylesheet" href="dist/assets/css/main/app-dark.css">
@@ -149,7 +151,7 @@
                                 </div>
 
                                 <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                    <div class="modal-dialog  modal-dialog-centered modal-dialog-scrollable" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h4 class="modal-title" id="myModalLabel33">Tambah Film</h4>
@@ -163,9 +165,13 @@
                                                     <div class="form-group">
                                                         <input type="text" name="" placeholder="" class="form-control">
                                                     </div>
-                                                    <label>Kategori</label>
+                                                    <label>Kategori:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <select name="" class="form-control" required>
+                                                            <option value="">Action</option>
+                                                            <option value="">Drama</option>
+                                                            <option value="">Comedy</option>
+                                                        </select>
                                                     </div>
                                                     <label>Rilis:</label>
                                                     <div class="form-group">
@@ -173,11 +179,19 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <textarea name="" placeholder="" class="form-control" required></textarea>
                                                     </div>
-                                                    <label>Aktor</label>
+                                                    <label>Aktor:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <select class="choices form-select multiple-remove" multiple="multiple">
+                                                            <option value="square">aktor 1</option>
+                                                            <option value="rectangle" selected>aktor2</option>
+                                                            <option value="rombo">aktor 3</option>
+                                                            <option value="romboid">aktor 4</option>
+                                                            <option value="trapeze">aktor 5</option>
+                                                            <option value="traible" selected>aktor 6</option>
+                                                            <option value="polygon">aktor 7</option>
+                                                        </select>
                                                     </div>
                                                     <label>Unggah Gambar:</label>
                                                     <div class="form-group">
@@ -263,11 +277,19 @@
                                             </div>
                                             <label>Deskripsi:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+                                                <textarea name="" placeholder="" class="form-control" required></textarea>
                                             </div>
-                                            <label>Aktor</label>
+                                            <label>Aktor:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+                                                <select class="choices form-select multiple-remove" multiple="multiple">
+                                                    <option value="square">aktor 1</option>
+                                                    <option value="rectangle" selected>aktor2</option>
+                                                    <option value="rombo">aktor 3</option>
+                                                    <option value="romboid">aktor 4</option>
+                                                    <option value="trapeze">aktor 5</option>
+                                                    <option value="traible" selected>aktor 6</option>
+                                                    <option value="polygon">aktor 7</option>
+                                                </select>
                                             </div>
                                             <label>Unggah Gambar:</label>
                                             <div class="form-group">
@@ -297,6 +319,9 @@
         <script src="dist/assets/js/bootstrap.js"></script>
         <script src="dist/assets/js/app.js"></script>
 
+
+        <script src="dist/assets/extensions/choices.js/public/assets/scripts/choices.js"></script>
+        <script src="dist/assets/js/pages/form-element-select.js"></script>
         <!-- Need: Apexcharts -->
         <script src="dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
         <script src="dist/assets/js/pages/dashboard.js"></script>

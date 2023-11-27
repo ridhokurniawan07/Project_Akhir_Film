@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+// Periksa apakah pengguna telah login
+$isLoggedIn = isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true;
+$role = isset($_SESSION['role']) ? $_SESSION['role'] : '';
+
+?>
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7 no-js" lang="en-US">
@@ -128,13 +136,26 @@
                         <li class="dropdown first">
                             <a href="genre.php"> Genre </a>
                         </li>
-                        <li class="dropdown first">
-                            <a href="userprofile.php"> User Profile </a>
                         </li>
+                        <?php
+                        // Tampilkan tautan "User Profile" hanya jika pengguna sudah login
+                        if ($isLoggedIn) {
+                            echo '<li class="dropdown first"><a href="userprofile.php"> User Profile </a></li>';
+                        }
+                        ?>
                     </ul>
                     <ul class="nav navbar-nav flex-child-menu menu-right">
-                        <!-- <li class="loginLink"><a href="#">LOG In</a></li> -->
-                        <li class="btn signupLink"><a href="#">Logout</a></li>
+                        <?php
+                        // Tampilkan tombol "Logout" hanya jika pengguna sudah login
+                        if ($isLoggedIn) {
+                            echo '<li class="" style="background-color: #dd003f;
+							color: #ffffff;
+							padding: 11px 25px;
+							-webkit-border-radius: 20px;
+							-moz-border-radius: 20px;
+							border-radius: 20px;"><a href="logout.php">Logout</a></li>';
+                        }
+                        ?>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -172,13 +193,10 @@
                     <div class="topbar-filter">
                         <p>Found <span>1,608 movies</span> in total</p>
                         <label>Sort by:</label>
-                        <select>
-                            <option value="popularity">Popularity Descending</option>
-                            <option value="popularity">Popularity Ascending</option>
-                            <option value="rating">Rating Descending</option>
-                            <option value="rating">Rating Ascending</option>
-                            <option value="date">Release date Descending</option>
-                            <option value="date">Release date Ascending</option>
+                        <select name="sort_by">
+                            <option value="title_az">Abjad (A-Z)</option>
+                            <option value="rating_desc">Rating Descending</option>
+                            <option value="date_desc">Release Date Descending</option>
                         </select>
                         <a href="moviegrid.php" class="grid"><i class="ion-grid active"></i></a>
                     </div>

@@ -174,11 +174,15 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
+<<<<<<< HEAD
                                                         <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                                     </div>
                                                     <label>Film</label>
                                                     <div class="form-group">
                                                         <input type="text" name="" placeholder="" class="form-control">
+=======
+                                                        <textarea name="" placeholder="" class="form-control" required></textarea>
+>>>>>>> 01aa4d6bff9c22c78f913d3ecc85830ff80028d9
                                                     </div>
                                                     <label>Unggah Gambar:</label>
                                                     <div class="form-group">
@@ -213,14 +217,12 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Negara</th>
                                             <th>Deskripsi</th>
-                                            <th>Film</th>
                                             <th>Foto</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -264,11 +266,15 @@
                                             </div>
                                             <label>Deskripsi:</label>
                                             <div class="form-group">
+<<<<<<< HEAD
                                             <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                             </div>
                                             <label>Film</label>
                                             <div class="form-group">
                                                 <input type="text" name="" placeholder="" class="form-control">
+=======
+                                                <textarea name="" placeholder="" class="form-control" required></textarea>
+>>>>>>> 01aa4d6bff9c22c78f913d3ecc85830ff80028d9
                                             </div>
                                             <label>Unggah Gambar:</label>
                                             <div class="form-group">
