@@ -11,7 +11,7 @@
 
 <head>
     <!-- Basic need -->
-    <title>Open Pediatrics</title>
+    <title>Block Buster</title>
     <meta charset="UTF-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -133,7 +133,7 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav flex-child-menu menu-right">
-                        <!-- <li class="loginLink"><a href="#">LOG In</a></li> -->
+                        <li class="loginLink"><a href="#">LOG In</a></li>
                         <li class="btn signupLink"><a href="#">Logout</a></li>
                     </ul>
                 </div>

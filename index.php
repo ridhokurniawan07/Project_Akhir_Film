@@ -11,7 +11,7 @@
 <!-- index14:58-->
 <head>
 	<!-- Basic need -->
-	<title>Open Pediatrics</title>
+	<title>Block Buster</title>
 	<meta charset="UTF-8">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
@@ -220,6 +220,7 @@
 						<li><a href="#tab2"> #Comedy</a></li>
 						<li><a href="#tab3">  #Romance </a></li>
 					</ul>
+					<br>
 				    <div class="tab-content">
 				        <div id="tab1" class="tab active">
 				            <div class="row">
@@ -306,53 +307,7 @@
 	</div>
 </div>
 
-<div class="trailers">
-	<div class="container">
-		<div class="row ipad-width">
-			<div class="col-md-12">
-				<div class="title-hd">
-					<h2>Trailer</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
-				</div>
-				<div class="videos">
-				 	<div class="slider-for-2 video-ft">
-				 		<div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/1Q8fG0TtVAY"></iframe>
-					    </div>
-					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/w0qQkSuWOS8"></iframe>
-					    </div>
-					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/44LdLqgOpjo"></iframe>
-					    </div>
-					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/gbug3zTm3Ws"></iframe>
-					    </div>
-					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/e3Nl_TCQXuw"></iframe>
-					    </div>
-					    <div>
-					    	<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/NxhEZG0k9_w"></iframe>
-					    </div>
-						
-						
-					</div>
-					<div class="slider-nav-2 thumb-ft">
-						<div class="item">
-							<div class="trailer-img">
-								<img src="images/uploads/trailer7.jpg"  alt="photo by Barn Images" width="4096" height="2737">
-							</div>
-							<div class="trailer-infor">
-	                        	<h4 class="desc">Wonder Woman</h4>
-	                        	<p>2:30</p>
-	                        </div>
-						</div>
-					</div>
-				</div>   
-			</div>
-		</div>
-	</div>
-</div>
+<!--      -->
 
 
 <!-- footer section-->

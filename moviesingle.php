@@ -298,19 +298,7 @@
                                                     Earth's mightiest heroes must come together once
                                                     again to protect the world from global extinction.
                                                 </p>
-                                                <div class="title-hd-sm">
-                                                    <h4>cast</h4>
-                                                </div>
-                                                <!-- movie cast -->
-                                                <div class="mvcast-item">
-                                                    <div class="cast-it">
-                                                        <div class="cast-left">
-                                                            <img src="images/uploads/cast1.jpg" alt="" />
-                                                            <a href="#">Robert Downey Jr.</a>
-                                                        </div>
-                                                        <p>... Robert Downey Jr.</p>
-                                                    </div>
-                                                </div>
+                                              
                                             </div>
                                             <div class="col-md-4 col-xs-12 col-sm-12">
                                                 <div class="sb-it">
@@ -373,7 +361,7 @@
                                                             <label for="review-title">Review Title:</label>
                                                             <input type="text" id="review-title" name="review-title" required />
                                                             <label for="user-review">Your Review:</label>
-                                                            <textarea id="user-review" name="user-review" rows="5" required></textarea>
+                                                            <textarea id="user-review" name="user-review" rows="5" required style="height: 120px;"></textarea>
                                                             <button type="submit" class="redbtn" style="margin-top: 10px">
                                                                 Submit Review
                                                             </button>
@@ -390,9 +378,11 @@
                                                     <h3>Related Movies To</h3>
                                                     <h2>Skyfall: Quantum of Spectre</h2>
                                                 </div>
-                                                <a href="#" id="write-review-btn" class="redbtn">Write Review</a>
+                                                  <a href="#" id="write-review-btn" class="redbtn" >Write Review</a>
                                             </div>
+
                                             <div class="topbar-filter">
+                                                
                                                 <p>Found <span>56 reviews</span> in total</p>
                                                 <label>Filter by:</label>
                                                 <select>
@@ -410,6 +400,7 @@
                                                     <option value="date">Release date Ascending</option>
                                                 </select>
                                             </div>
+                                             
                                             <div class="mv-user-review-item">
                                                 <div class="user-infor">
                                                     <img src="images/uploads/userava1.jpg" alt="" />

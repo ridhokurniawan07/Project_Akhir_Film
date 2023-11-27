@@ -163,7 +163,7 @@
                                                     <div class="form-group">
                                                         <input type="text" name="" placeholder="" class="form-control">
                                                     </div>
-                                                    <label>Kategori</label>
+                                                    <label>Genre</label>
                                                     <div class="form-group">
                                                         <input type="text" name="" placeholder="" class="form-control">
                                                     </div>
@@ -173,7 +173,7 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                         <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                                     </div>
                                                     <label>Aktor</label>
                                                     <div class="form-group">
@@ -209,7 +209,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Film</th>
-                                            <th>Kategori</th>
+                                            <th>Genre</th>
                                             <th>Rilis</th>
                                             <th>Deskripsi</th>
                                             <th>Aktor</th>
@@ -253,7 +253,7 @@
                                             <div class="form-group">
                                                 <input type="text" name="" placeholder="" class="form-control">
                                             </div>
-                                            <label>Kategori</label>
+                                            <label>Genre</label>
                                             <div class="form-group">
                                                 <input type="text" name="" placeholder="" class="form-control">
                                             </div>
