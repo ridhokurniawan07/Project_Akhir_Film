@@ -113,7 +113,7 @@
                 </div>
             </div>
         </div>
-        <div id="tab2" class="tab">
+        <div id="tab2" class="tab" style="margin-left: -16px">
             <div class="row">
                 <div class="slick-multiItem">
                 <div class="slide-it">
@@ -217,7 +217,7 @@
                 </div>
             </div>
         </div>
-        <div id="tab3" class="tab">
+        <div id="tab3" class="tab" style="margin-left: -16px">
             <div class="row">
                 <div class="slick-multiItem">
                 <div class="slide-it">

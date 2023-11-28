@@ -170,7 +170,7 @@ if (isset($_GET['action']) && isset($_GET['genre_id'])) {
                     <div class="row">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Data Kategori</h3>
+                                <h3>Data Genre</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -187,7 +187,7 @@ if (isset($_GET['action']) && isset($_GET['genre_id'])) {
                             <div class="card-body">
                                 <div class="buttons">
                                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#inlineForm">
-                                        Tambahkan Kategori
+                                        Tambahkan Genre
                                     </button>
                                 </div>
                             </div>
@@ -196,7 +196,7 @@ if (isset($_GET['action']) && isset($_GET['genre_id'])) {
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Kategori</th>
+                                            <th>Nama Genre</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>

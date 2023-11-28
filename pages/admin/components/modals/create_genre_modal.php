@@ -2,14 +2,14 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel33">Tambah Kategori</h4>
+                <h4 class="modal-title" id="myModalLabel33">Tambah Genre</h4>
                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Tutup">
                     <i data-feather="x" class="d-block d-sm-none"></i>
                 </button>
             </div>
             <form method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
-                    <label>Nama Kategori:</label>
+                    <label>Nama Genre:</label>
                     <div class="form-group">
                         <input type="text" name="genre_name" placeholder="Input Genre" class="form-control">
                     </div>
