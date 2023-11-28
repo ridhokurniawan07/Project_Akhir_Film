@@ -1,8 +1,8 @@
 <?php
 
-    include "connection.php";
+    include "koneksi.php";
 
-    $query = mysqli_query($connection, "SELECT * FROM tb_genre")
+    $query = mysqli_query($koneksi, "SELECT * FROM tb_genre")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -219,10 +219,10 @@
 
                         <div class="modal fade text-left" id="editForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
                             <?php
-                              include "connection.php";
+                              include "koneksi.php";
                               $genre_id= $_GET['genre_id'];
 
-                              $genre = mysqli_query($connection, "SELECT * FROM tb_genre WHERE genre_id='$genre_id' ");
+                              $genre = mysqli_query($koneksi, "SELECT * FROM tb_genre WHERE genre_id='$genre_id' ");
 
                               foreach ($genre as $tb_genre){
                                 $genre_id =  $tb_genre['genre_id'];
