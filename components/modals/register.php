@@ -1,7 +1,26 @@
-<?php 
+<?php
+    include_once './models/AuthModel.php';
+
+    $authModel = new AuthModel();
+
     if (isset($_POST['request_sign_up'])) {
-        // Set session variables
-        $_SESSION['is_login'] = true;
+        $username    	= $_POST['username'];
+        $email    	    = $_POST['email'];
+        $password    	= $_POST['password'];
+        $rePassword    	= $_POST['rePassword'];
+        $role           = 'user';
+        
+        if ($password == $rePassword) {
+            $requestRegister = $authModel->requestRegister($username, $password, $password, $role);
+
+            if ($requestRegister) {
+                header('location:#');
+            } else {
+                echo '<div class="alert alert-secondary" role="alert">Sorry, Something Wrong. Please Try Again</div>';
+            }
+        } else {
+            echo '<div class="alert alert-secondary" role="alert">Sorry, Check your password and Try Again</div>';
+        }
     }
 ?>
 <div class="login-wrapper"  id="signup-content">
@@ -31,7 +50,7 @@
              <div class="row">
                 <label for="repassword-2">
                     re-type Password:
-                    <input type="password" name="password" id="repassword-2" placeholder="Re-input your password" required="required" />
+                    <input type="password" name="rePassword" id="repassword-2" placeholder="Re-input your password" required="required" />
                 </label>
             </div>
            <div class="row">

@@ -1,11 +1,15 @@
 <?php 
-    if (isset($_GET['action'])) {
-        $action = $_GET['action'];
-        if ($action == "logout") {
-            session_destroy();
-            header('location:./');
-        }
+include_once './models/AuthModel.php';
+
+$authModel = new AuthModel;
+
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+    if ($action == "logout") {
+        $authModel->requestLogout();
+        header('location:./');
     }
+}
 ?>
 
 <nav class="navbar navbar-default navbar-custom">

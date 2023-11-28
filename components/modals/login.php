@@ -1,7 +1,19 @@
-<?php 
+<?php
+    include_once './models/AuthModel.php';
+
+    $authModel = new AuthModel();
+
     if (isset($_POST['request_login'])) {
-        // Set session variables
-        $_SESSION['is_login'] = true;
+        $username    	= $_POST['username'];
+        $password    	= $_POST['password'];
+
+        $requestLogin = $authModel->requestLogin($username, $password);
+
+        if ($requestLogin) {
+            header('location:#');
+        } else {
+            echo '<div class="alert" role="alert">Sorry, Login Failed. Please check your email or password</div>';
+        }
     }
 ?>
 <div class="login-wrapper" id="login-content">
