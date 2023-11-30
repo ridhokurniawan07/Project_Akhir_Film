@@ -242,7 +242,7 @@
                                         <div class="modal-body">
                                             <label>Nama Genre:</label>
                                             <div class="form-group">
-                                               <td> <input type="text" name="genre_name" class="form-control" required="" autocomplete="off" value="<?php echo $genre_name;?>"></td>
+                                               <td> <input type="text" name="genre_name" class="form-control" required="" autocomplete="off" value="<?= $data['genre_name'] ?>"></td>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
