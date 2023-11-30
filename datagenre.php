@@ -2,7 +2,7 @@
 
     include "koneksi.php";
 
-    $query = mysqli_query($koneksi, "SELECT * FROM tb_genre")
+    $query = mysqli_query($conn, "SELECT * FROM tb_genre")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,38 +198,30 @@
                                     </thead>
                                     <?php 
                                     $no = 1;
-                                    while ($tb_genre = mysqli_fetch_array($query)) { ?>
+                                    while ($data = mysqli_fetch_array($query)) { ?>
                                     <tbody>
                                         <tr>
-                                            <td> <?php echo $no; ?> </td> <!-- Menampilkan nomor berurutan -->
-                                            <td> <?php echo $tb_genre ['genre_name']; ?> </td>
+                                            <td> <?php echo $no++; ?> </td> <!-- Menampilkan nomor berurutan -->
+                                            <td> <?php echo $data ['genre_name']; ?> </td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm" href="proses_edit_genre.php?genre_id=<?php echo $tb_genre ['genre_id']; ?>">Edit</button>
+                                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm<?= $data['genre_id'] ?>">Edit</button>
 
                                                     <a class='btn btn-danger' onclick="return confirm ('hapus data ini?');"  href="proses_delete_genre.php?genre_id=<?php echo $tb_genre ['genre_id']; ?>">Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
-                                    <?php $no++; } ?>
+                                    <?php } ?>
                                 </table>
                             </div>
                         </div>
-
-                        <div class="modal fade text-left" id="editForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
-                            <?php
-                              include "koneksi.php";
-                              $genre_id= $_GET['genre_id'];
-
-                              $genre = mysqli_query($koneksi, "SELECT * FROM tb_genre WHERE genre_id='$genre_id' ");
-
-                              foreach ($genre as $tb_genre){
-                                $genre_id =  $tb_genre['genre_id'];
-                                $genre_name =  $tb_genre['genre_name'];
-
-                                }
-                            ?>
+                        
+                        <?php
+                              $query = mysqli_query($conn, "SELECT * FROM tb_genre");
+                              while ($data = mysqli_fetch_array($query)) {
+                        ?>
+                        <div class="modal fade text-left" id="editForm<?= $data['genre_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">                           
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -238,11 +230,11 @@
                                             <i data-feather="x" class="d-block d-sm-none"></i>
                                         </button>
                                     </div>
-                                   <form action="proses_edit_genre.php?genre_id=<?php echo $genre_id; ?>" method="POST" name="form-input-data">
+                                   <form action="proses_edit_genre.php" method="POST" name="form-input-data">
                                         <div class="modal-body">
                                             <label>Nama Genre:</label>
                                             <div class="form-group">
-                                               <td> <input type="text" name="genre_name" class="form-control" required="" autocomplete="off" value="<?php echo $genre_name;?>"></td>
+                                               <td> <input type="text" name="genre_name" class="form-control" required="" autocomplete="off" value="<?= $data['genre_name'] ?>"></td>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -260,6 +252,7 @@
                                     </form>
                                 </div>
                             </div>
+                            <?php } ?>
                         </div>
                     </section>
                 </div>

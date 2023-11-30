@@ -5,6 +5,6 @@
     $password = "";
     $db = "db_film";
 
-    $koneksi = new mysqli($host, $username, $password, $db);
+    $conn = new mysqli($host, $username, $password, $db);
 
 ?>
