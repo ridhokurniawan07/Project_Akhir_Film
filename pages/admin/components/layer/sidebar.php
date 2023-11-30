@@ -48,6 +48,14 @@
                         <i class="bi bi-collection-fill"></i>
                         <span>Data Film</span>
                     </a>
+<<<<<<< HEAD
+=======
+                    <ul class="submenu ">
+                        <li class="submenu-item ">
+                            <a href="../datafilm.php">Film</a>
+                        </li>
+                    </ul>
+>>>>>>> 02c2be2 (temp)
                 </li>
 
                 <li class="sidebar-item <?= $pageName == "Data Aktor" ? "active" : ""?>">
