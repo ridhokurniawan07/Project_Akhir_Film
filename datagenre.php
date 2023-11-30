@@ -187,6 +187,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="card-body">
                                 <table class="table table-striped" id="table1">
                                     <thead>
@@ -207,12 +208,12 @@
                                                 <div class="d-flex gap-2">
                                                     <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm<?= $data['genre_id'] ?>">Edit</button>
 
-                                                    <a class='btn btn-danger' onclick="return confirm ('hapus data ini?');"  href="proses_delete_genre.php?genre_id=<?php echo $tb_genre ['genre_id']; ?>">Hapus</a>
+                                                    <a class='btn btn-danger' onclick="return confirm ('hapus data ini?');"  href="proses_delete_genre.php?genre_id=<?php echo $data ['genre_id']; ?>">Hapus</a>
                                                 </div>
                                             </td>
                                         </tr>
+                                        <?php } ?>
                                     </tbody>
-                                    <?php } ?>
                                 </table>
                             </div>
                         </div>
@@ -221,8 +222,8 @@
                               $query = mysqli_query($conn, "SELECT * FROM tb_genre");
                               while ($data = mysqli_fetch_array($query)) {
                         ?>
-                        <div class="modal fade text-left" id="editForm<?= $data['genre_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">                           
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal fade text-left" id="editForm<?= $data['genre_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">                            
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h4 class="modal-title" id="myModalLabel33">Edit Genre</h4>
@@ -230,11 +231,12 @@
                                             <i data-feather="x" class="d-block d-sm-none"></i>
                                         </button>
                                     </div>
-                                   <form action="proses_edit_genre.php" method="POST" name="form-input-data">
+                                   <form action="proses_edit_genre.php" method="POST">
                                         <div class="modal-body">
                                             <label>Nama Genre:</label>
                                             <div class="form-group">
-                                               <td> <input type="text" name="genre_name" class="form-control" required="" autocomplete="off" value="<?= $data['genre_name'] ?>"></td>
+                                            <input type="hidden" name="genre_id" value="<?= $data['genre_id'] ?>">
+                                            <input type="text" name="genre_name" placeholder="" class="form-control" value="<?= $data['genre_name'] ?>">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -252,8 +254,8 @@
                                     </form>
                                 </div>
                             </div>
-                            <?php } ?>
                         </div>
+                        <?php } ?>
                     </section>
                 </div>
             </div>
