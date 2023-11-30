@@ -1,6 +1,11 @@
+<?php
+    include "koneksi.php";
+    $query = mysqli_query($conn, "SELECT * FROM tb_actor ORDER BY actor_id DESC");
+
+    
+?>
 <!DOCTYPE html>
-<html lang="en">
-<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<html lang="en"> 
 
 <head>
     <meta charset="UTF-8">
@@ -158,35 +163,27 @@
                                                     <i data-feather="x" class="d-block d-sm-none"></i>
                                                 </button>
                                             </div>
-                                            <form action="" method="POST" enctype="multipart/form-data">
+                                            <form action="models/prosestambahaktor.php" method="POST" enctype="multipart/form-data">
                                                 <div class="modal-body">
                                                     <label>Nama Aktor:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <input type="text" name="name_actor" placeholder="" class="form-control">
                                                     </div>
                                                     <label>Tanggal Lahir</label>
                                                     <div class="form-group">
-                                                        <input type="date" name="" placeholder="" class="form-control">
+                                                        <input type="date" name="birth_date" placeholder="" class="form-control">
                                                     </div>
                                                     <label>Negara:</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
+                                                        <input type="text" name="country" placeholder="" class="form-control">
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-<<<<<<< HEAD
-                                                        <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
-                                                    </div>
-                                                    <label>Film</label>
-                                                    <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
-=======
-                                                        <textarea name="" placeholder="" class="form-control" required></textarea>
->>>>>>> 01aa4d6bff9c22c78f913d3ecc85830ff80028d9
+                                                        <textarea id="deskripsi" name="actor_description" placeholder="" class="form-control"></textarea>
                                                     </div>
                                                     <label>Unggah Gambar:</label>
                                                     <div class="form-group">
-                                                        <input type="file" name="" class="form-control-file">
+                                                        <input type="file" name="gambar" class="form-control-file">
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -222,25 +219,40 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    
+                                    <tbody>
+                                    <tbody>
+                                    
+                                        <?php
+                                        $no = 1; 
+                                        while ($data = mysqli_fetch_array($query)) {
+                                        ?>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?php echo $no++ ?></td>
+                                            <td><?php echo $data['name_actor']; ?></td>
+                                            <td><?php echo $data['birth_date']; ?></td>
+                                            <td><?php echo $data['country']; ?></td>
+                                            <td><?php echo $data['actor_description']; ?></td>
+                                            <td><a href="./images/aktor/<?php echo $data['foto'] ?>" target="_blank"> <img src="./images/aktor/<?php echo $data['foto'] ?> " width="50px"></td>
                                             <td></td>
                                             <td>
                                                 <div class="d-flex gap-2">
-                                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm">Edit</button>
-                                                    <a href=""><button class="btn btn-danger">Hapus</button></a>
+                                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm<?= $data['actor_id'] ?>">Edit</button>
+                                                <a href="models/proseshapusaktor.php?actor_id=<?= $data['actor_id'] ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus aktor ini?')">
+                                                <button class="btn btn-danger">Hapus</button>
                                                 </div>
                                             </td>
                                         </tr>
+                                        <?php  } ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="modal fade text-left" id="editForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
+                        <?php
+                        $query = mysqli_query($conn, "SELECT * FROM tb_actor");
+                        while ($data = mysqli_fetch_array($query)) {
+                        ?>
+                        <div class="modal fade text-left" id="editForm<?= $data['actor_id'] ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -249,37 +261,32 @@
                                             <i data-feather="x" class="d-block d-sm-none"></i>
                                         </button>
                                     </div>
-                                    <form action="" method="POST" enctype="multipart/form-data">
+                                    <form action="models/proseseditaktor.php" method="POST" enctype="multipart/form-data">
                                         <div class="modal-body">
 
                                             <label>Nama Aktor:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+                                            <input type="text" name="name_actor" placeholder="" class="form-control" value="<?= $data['name_actor'] ?>">
                                             </div>
-                                            <label>Tanggal Lahir</label>
+                                           <label>Tanggal Lahir</label>
                                             <div class="form-group">
-                                                <input type="date" name="" placeholder="" class="form-control">
+                                                <input type="date" name="birth_date" placeholder="" class="form-control" value="<?= $data['birth_date'] ?>">
                                             </div>
                                             <label>Negara:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+                                            <input type="text" name="country" placeholder="" class="form-control" value="<?= $data['country'] ?>">
                                             </div>
                                             <label>Deskripsi:</label>
                                             <div class="form-group">
-<<<<<<< HEAD
-                                            <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
-                                            </div>
-                                            <label>Film</label>
-                                            <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
-=======
-                                                <textarea name="" placeholder="" class="form-control" required></textarea>
->>>>>>> 01aa4d6bff9c22c78f913d3ecc85830ff80028d9
+                                            <textarea id="deskripsi" name="actor_description" placeholder="" class="form-control"><?= $data['actor_description'] ?></textarea>
                                             </div>
                                             <label>Unggah Gambar:</label>
                                             <div class="form-group">
-                                                <input type="file" name="" class="form-control-file">
+                                            <img src="./images/aktor/<?php echo $data['foto']; ?>" width="70px">
+                                            <input type="file" name="gambar" class="form-control-file">
+                                            <input type="hidden" name="actor_id" value="<?= $data['actor_id']; ?>">
                                             </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
@@ -297,6 +304,7 @@
                                 </div>
                             </div>
                         </div>
+                        <?php } ?>
                     </section>
                 </div>
             </div>
