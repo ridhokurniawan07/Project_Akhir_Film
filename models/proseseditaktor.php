@@ -36,7 +36,11 @@ if (isset($_POST['submit'])) {
 
     if ($result) {
         // If the query is successful, redirect to the original page
+<<<<<<< HEAD
         header("Location: dataaktor.php");
+=======
+        header("Location: ../dataaktor.php");
+>>>>>>> 48b904a (fixing CRUD Actor)
         exit();
     } else {
         // If the query fails, display an error message
@@ -44,6 +48,13 @@ if (isset($_POST['submit'])) {
     }
 } else {
     // If the form is not submitted, redirect to the original page
+<<<<<<< HEAD
     header("Location: dataaktor.php");
     exit();
 }
+=======
+    header("Location: ../dataaktor.php");
+    exit();
+}
+?>
+>>>>>>> 48b904a (fixing CRUD Actor)

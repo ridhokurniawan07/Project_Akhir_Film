@@ -39,4 +39,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Tutup koneksi
 mysqli_close($conn);
 
-header("location:datafilm.php");
+header("location:../datafilm.php");
