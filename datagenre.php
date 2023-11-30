@@ -1,3 +1,46 @@
+<?php 
+include_once './models/GenreModel.php';
+
+$genreModel = new GenretModel;
+
+if (isset($_POST['request-create-genre'])) {
+    $genreName  = $_POST['genre_name'];
+
+    if ($genreModel->requestCreateGenre($genreName)) {
+        header('location:#');
+    } else {
+        echo '<div class="alert alert-secondary" role="alert">Sorry, Something Wrong. Please try again</div>';
+    }
+}
+
+if (isset($_POST['request-update-genre'])) {
+    $genreId  = $_POST['genre_id'];
+    $genreName  = $_POST['genre_name'];
+
+    if ($genreModel->requestUpdateGenre($genreId, $genreName)) {
+        header('location:datagenre.php');
+    } else {
+        echo '<div class="alert alert-secondary" role="alert">Sorry, Something Wrong. Please try again</div>';
+    }
+}
+
+if (isset($_GET['action']) && isset($_GET['genre_id'])) {
+    $action = $_GET['action'];
+    $genreId = $_GET['genre_id'];
+
+    if ($action == "delete") {
+        $requestDelete = $genreModel->requestDeleteGenre($genreId);
+        if ($requestDelete) {
+            header('location:datagenre.php');
+        } else {
+            echo '<div class="alert alert-secondary" role="alert">Sorry, Something Wrong. Please try again</div>';
+
+        }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,7 +170,7 @@
                     <div class="row">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Data Kategori</h3>
+                                <h3>Data Genre</h3>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -144,40 +187,8 @@
                             <div class="card-body">
                                 <div class="buttons">
                                     <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#inlineForm">
-                                        Tambahkan Kategori
+                                        Tambahkan Genre
                                     </button>
-                                </div>
-                                <div class="modal fade text-left" id="inlineForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel33">Tambah Kategori</h4>
-                                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Tutup">
-                                                    <i data-feather="x" class="d-block d-sm-none"></i>
-                                                </button>
-                                            </div>
-                                            <form action="" method="POST" enctype="multipart/form-data">
-                                                <div class="modal-body">
-                                                    <label>Nama Kategori:</label>
-                                                    <div class="form-group">
-                                                        <input type="text" name="" placeholder="" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                                                        <i class="bx bx-x d-inline d-sm-none"></i>
-                                                        <span class="d-inline d-sm-none">Tutup</span>
-                                                        <span class="d-none d-sm-inline">Tutup</span>
-                                                    </button>
-                                                    <button type="submit" name="submit" class="btn btn-primary ml-1">
-                                                        <i class="bx bx-check d-inline d-sm-none"></i>
-                                                        <span class="d-inline d-sm-none">Tambahkan</span>
-                                                        <span class="d-none d-sm-inline">Tambahkan</span>
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -185,61 +196,33 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Kategori</th>
+                                            <th>Nama Genre</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td></td> <!-- Menampilkan nomor berurutan -->
-                                            <td></td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm">Edit</button>
-                                                    <a href=""><button class="btn btn-danger">Hapus</button></a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <?php 
+                                        $no = 0;
+                                        $genreList = $genreModel->requestGenreList();
+                                        if (isset($genreList)) {
+                                            foreach ($genreList as $genre) {
+                                                $no++;
+                                                include './pages/admin/components/cell/genre_cell.php';
+                                                include './pages/admin/components/modals/edit_genre_modal.php';
+                                            }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="modal fade text-left" id="editForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel33" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel33">Edit Kategori</h4>
-                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Tutup">
-                                            <i data-feather="x" class="d-block d-sm-none"></i>
-                                        </button>
-                                    </div>
-                                    <form action="" method="POST" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                            <label>Nama Kategori:</label>
-                                            <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                                                <i class="bx bx-x d-inline d-sm-none"></i>
-                                                <span class="d-inline d-sm-none">Tutup</span>
-                                                <span class="d-none d-sm-inline">Tutup</span>
-                                            </button>
-                                            <button type="submit" name="submit" class="btn btn-primary ml-1">
-                                                <i class="bx bx-check d-inline d-sm-none"></i>
-                                                <span class="d-inline d-sm-none">Simpan Perubahan</span>
-                                                <span class="d-none d-sm-inline">Simpan Perubahan</span>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </section>
                 </div>
             </div>
         </div>
+
+        <?php include_once './pages/admin/components/modals/create_genre_modal.php';?>
         <script src="dist/assets/js/bootstrap.js"></script>
         <script src="dist/assets/js/app.js"></script>
 

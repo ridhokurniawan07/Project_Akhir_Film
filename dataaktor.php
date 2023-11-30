@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -173,11 +174,15 @@
                                                     </div>
                                                     <label>Deskripsi:</label>
                                                     <div class="form-group">
-                                                        <input type="textarea" name="" placeholder="" class="form-control">
+<<<<<<< HEAD
+                                                        <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                                     </div>
                                                     <label>Film</label>
                                                     <div class="form-group">
                                                         <input type="text" name="" placeholder="" class="form-control">
+=======
+                                                        <textarea name="" placeholder="" class="form-control" required></textarea>
+>>>>>>> 01aa4d6bff9c22c78f913d3ecc85830ff80028d9
                                                     </div>
                                                     <label>Unggah Gambar:</label>
                                                     <div class="form-group">
@@ -212,14 +217,12 @@
                                             <th>Tanggal Lahir</th>
                                             <th>Negara</th>
                                             <th>Deskripsi</th>
-                                            <th>Film</th>
                                             <th>Foto</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -263,11 +266,15 @@
                                             </div>
                                             <label>Deskripsi:</label>
                                             <div class="form-group">
-                                                <input type="text" name="" placeholder="" class="form-control">
+<<<<<<< HEAD
+                                            <textarea id="deskripsi" name="deskripsi" placeholder="" class="form-control"></textarea>
                                             </div>
                                             <label>Film</label>
                                             <div class="form-group">
                                                 <input type="text" name="" placeholder="" class="form-control">
+=======
+                                                <textarea name="" placeholder="" class="form-control" required></textarea>
+>>>>>>> 01aa4d6bff9c22c78f913d3ecc85830ff80028d9
                                             </div>
                                             <label>Unggah Gambar:</label>
                                             <div class="form-group">
@@ -300,7 +307,7 @@
         <!-- Need: Apexcharts -->
         <script src="dist/assets/extensions/apexcharts/apexcharts.min.js"></script>
         <script src="dist/assets/js/pages/dashboard.js"></script>
-
+        
 </body>
 
 </html>

@@ -1,0 +1,71 @@
+/* Styles for the modal overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Styles for the modal content */
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  /* Adjust the width as needed */
+  max-width: 600px;
+  /* Set a maximum width if desired */
+  height: auto;
+  /* You can set a fixed height if needed */
+  position: relative;
+  margin: auto;
+}
+
+/* Styles for the close button */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Styles for the review form */
+#review-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 25px;
+  color: #ccc;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input:checked ~ label {
+  color: #ffcc00;
+}
