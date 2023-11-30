@@ -107,7 +107,7 @@
                                 <tr>
                                     <td><?php echo $no++ ?></td>
                                     <td><?php echo $data['name_actor']; ?></td>
-                                    <td><?php echo $data['birth_date']; ?></td>
+                                    <td><?php echo date_format(date_create($data['birth_date']), 'd/m/Y'); ?></td>
                                     <td><?php echo $data['country']; ?></td>
                                     <td><?php echo $data['actor_description']; ?></td>
                                     <td><a href="./images/aktor/<?php echo $data['foto'] ?>" target="_blank"> <img src="./images/aktor/<?php echo $data['foto'] ?> " width="50px"></td>

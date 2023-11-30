@@ -1,4 +1,5 @@
 <?php
+    $pageName = "Data Aktor";
     include "koneksi.php";
     $query = mysqli_query($conn, "SELECT * FROM tb_actor ORDER BY actor_id DESC");
 
