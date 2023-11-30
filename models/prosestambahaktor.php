@@ -27,24 +27,29 @@
     }else{
      //jika format file sesuai dengan yang ada di dalam array tipe diizinkan
     //proses upload file sekaligus insert ke database
-    move_uploaded_file($tmp_name, './images/aktor/' .$newname);
+    $upload = move_uploaded_file($tmp_name, './images/aktor/' .$newname);
     
-
-    $insert = mysqli_query($conn, "INSERT INTO tb_actor (name_actor, birth_date, country, actor_description, foto) VALUES (
-        '".$name_actor."',
-        '".$birth_date."',
-        '".$country."',
-        '".$actor_description."',
-        '".$newname."'
-    ) ");
-
-
-    if($insert){
-    echo '<script>alert("Tambah data berhasil")</script>';
-    echo '<script>window.location="dataaktor.php"</script>';
+    if ($upload) {
+        $insert = mysqli_query($conn, "INSERT INTO tb_actor (name_actor, birth_date, country, actor_description, foto) VALUES (
+            '".$name_actor."',
+            '".$birth_date."',
+            '".$country."',
+            '".$actor_description."',
+            '".$newname."'
+        ) ");
+    
+    
+        if($insert){
+        echo '<script>alert("Tambah data berhasil")</script>';
+        echo '<script>window.location="../dataaktor.php"</script>';
+        }else{
+        echo 'gagal' .mysqli_error($conn);
+        }
     }else{
     echo 'gagal' .mysqli_error($conn);
     }
+
+    
 }
 
 ?>
