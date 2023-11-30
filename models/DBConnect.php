@@ -3,7 +3,7 @@ class DBConnect {
 	var $host = "localhost";
 	var $username = "root";
 	var $password = "";
-	var $database = "tb_film";
+	var $database = "db_film";
 	var $connect;
 
 	function __construct(){

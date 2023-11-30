@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once './models/AuthModel.php';
 
 $authModel = new AuthModel;
@@ -43,19 +43,16 @@ if (isset($_GET['action'])) {
             <li class="dropdown first">
                 <a href="genre.php"> Genre </a>
             </li>
-            <li class="dropdown first">
-                <a href="userprofile.php"> User Profile </a>
-            </li>
         </ul>
-        
-        <?php 
+
+        <?php
         if (isset($_SESSION['is_login'])) {
             echo '
             <ul class="nav navbar-nav flex-child-menu menu-right">
+                <li class="dropwonfirst"><a href="userprofile.php"><i class="fas fa-user" style="font-size: 20px; margin-top: -10px; margin-right: 10px;"></i></a></li>
                 <li class="btn"><a href="index.php?action=logout">Logout</a></li>
                 <li class="loginLink hidden"><a id="loginLink" href="#">LOG In</a></li>
-            </ul>
-        ';
+            </ul>';
         } else {
             echo '
             <ul class="nav navbar-nav flex-child-menu menu-right">
@@ -63,7 +60,7 @@ if (isset($_GET['action'])) {
                 <li class="btn signupLink"><a href="#">sign up</a></li>
             </ul>
             ';
-        }?>
+        } ?>
     </div>
     <!-- /.navbar-collapse -->
 </nav>
