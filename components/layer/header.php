@@ -1,8 +1,9 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
     <!-- Basic need -->
-    <title>Open Pediatrics</title>
+    <title><?= $pageName ?></title>
     <meta charset="UTF-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -18,5 +19,13 @@
     <!-- CSS files -->
     <link rel="stylesheet" href="css/plugins.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <?php 
+      $isWriteReview = $pageName == "Movie Single" ? true : false;
+      if ($isWriteReview) {
+        echo '<link rel="stylesheet" href="css/write-review.css" />';
+      }
+    ?>
+    
   </head>
   <body>
