@@ -56,6 +56,14 @@
 	</div>
 </footer>
 <!-- end of footer section-->
+<?= 
+$isWriteReview = $pageName == "Movie Single" ? true : false;
+if ($isWriteReview) {
+	include_once 'footer_write_review.php';
+}
+?>
+
+
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/plugins2.js"></script>
