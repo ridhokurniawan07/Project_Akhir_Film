@@ -27,7 +27,7 @@
     }else{
      //jika format file sesuai dengan yang ada di dalam array tipe diizinkan
     //proses upload file sekaligus insert ke database
-    $upload = move_uploaded_file($tmp_name, './images/aktor/' .$newname);
+    $upload = move_uploaded_file($tmp_name, '../images/aktor/' .$newname);
     
     if ($upload) {
         $insert = mysqli_query($conn, "INSERT INTO tb_actor (name_actor, birth_date, country, actor_description, foto) VALUES (

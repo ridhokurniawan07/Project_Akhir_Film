@@ -18,65 +18,51 @@
                 </div>
             </div>
         </div>
+        <?php
+       
+        $current_page = basename($_SERVER['PHP_SELF']);
+
+        function isMenuActive($menuPage, $currentPage) {
+            return ($menuPage === $currentPage) ? 'active' : '';
+        }
+        ?>
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item <?php echo isMenuActive('adminhome.php', $current_page); ?>">
                     <a href="./adminhome.php" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item <?php echo isMenuActive('datauser.php', $current_page); ?>">
+                    <a href="./datauser.php" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Data user</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./datauser.php">User</a>
-                        </li>
-
-                    </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item  <?php echo isMenuActive('datagenre.php', $current_page); ?>">
+                    <a href="./datagenre.php" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Data Genre</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./datagenre.php">Genre</a>
-                        </li>
-
-                    </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item <?php echo isMenuActive('datafilm.php', $current_page); ?>">
+                    <a href="./datafilm.php" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Data Film</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./datafilm.php">Film</a>
-                        </li>
-                    </ul>
                 </li>
 
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item <?php echo isMenuActive('dataaktor.php', $current_page); ?>">
+                    <a href="./dataaktor.php" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Data Aktor</span>
                     </a>
-                    <ul class="submenu ">
-                        <li class="submenu-item ">
-                            <a href="./dataaktor.php">Aktor</a>
-                        </li>
-                    </ul>
                 </li>
 
                 <li class="sidebar-title">Sign-Out</li>

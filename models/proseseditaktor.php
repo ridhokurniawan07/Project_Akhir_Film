@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         $new_file_name = 'aktor_' . uniqid() . '_' . $file_name;
 
         // Set the upload path
-        $path = "./images/aktor/";
+        $path = "../images/aktor/";
 
         // Move the uploaded file to the specified path with the new filename
         move_uploaded_file($temp_name, $path . $new_file_name);
