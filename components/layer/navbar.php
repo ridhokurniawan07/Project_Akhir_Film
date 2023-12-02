@@ -6,8 +6,9 @@ $authModel = new AuthModel;
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == "logout") {
+        $current_page = basename($_SERVER['PHP_SELF']);
         $authModel->requestLogout();
-        header('location:./');
+        header('location:'.$current_page);
     }
 }
 ?>

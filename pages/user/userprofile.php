@@ -1,3 +1,55 @@
+<?php
+    include_once './models/UserModel.php';
+
+    $userModel 		= new UserModel();
+	$userProfile 	= $userModel->requestDetail();
+
+    if (isset($_POST['update_profile'])) {
+        $username   = $_POST['username'];
+        $name    	= $_POST['name'];
+
+        $request = $userModel->requestUpdateProfile($username, $name);
+		if ($request) {
+			$userProfile = $userModel->requestDetail();
+			echo '
+			<script language="javascript">
+				alert("Update Profile Success!!!")
+			</script>';
+        } else {
+			echo '
+			<script language="javascript">
+				alert("Sorry, Update Profile Failed. Please, try again!")
+			</script>';
+        }
+    }
+
+	if (isset($_POST['update_password'])) {
+        $password   	= $_POST['password'];
+        $repassword    	= $_POST['repassword'];
+
+		if ($password === $repassword) {
+			$request = $userModel->requestUpdatePassword($password, $repassword);
+			if ($request) {
+				echo '
+				<script language="javascript">
+					alert("Update Password Success!!!")
+				</script>';
+			} else {
+				echo '
+				<script language="javascript">
+					alert("Sorry, Update Password Failed. Please, try again!")
+				</script>';
+			}
+		} else {
+			echo '
+			<script language="javascript">
+				alert("Sorry, Password doesnt match. Please, try again!")
+			</script>';
+		}
+        
+    }
+?>
+
 <div class="hero user-hero">
 	<div class="container">
 		<div class="row">
@@ -31,43 +83,43 @@
 			</div>
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="form-style-1 user-pro" action="#">
-					<form action="#" class="user">
+					<form method="POST" class="user">
 						<h4>01. Profile details</h4>
 						<div class="row">
 							<div class="col-md-6 form-it">
 								<label>Username</label>
-								<input type="text" placeholder="edwardkennedy">
+								<input type="text" name="username" value="<?= $userProfile['username'] ?>" placeholder="edwardkennedy">
 							</div>
 							<div class="col-md-6 form-it">
 								<label>Name</label>
-								<input type="text" placeholder="edward@kennedy.com">
+								<input type="text" name="name" value="<?= $userProfile['name'] ?>" placeholder="edward@kennedy.com">
 							</div>
 						</div>
 						
 						<div class="row">
 							<div class="col-md-2">
-								<input class="submit" type="submit" value="save">
+								<input class="submit" name="update_profile" type="submit" value="save">
 							</div>
 						</div>	
 					</form>
-					<form action="#" class="password">
+					<form method="POST" class="password">
 						<h4>02. Change password</h4>
 						
 						<div class="row">
 							<div class="col-md-6 form-it">
 								<label>New Password</label>
-								<input type="text" placeholder="***************">
+								<input type="password" name="password" placeholder="***************">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-6 form-it">
 								<label>Confirm New Password</label>
-								<input type="text" placeholder="*************** ">
+								<input type="password" name="repassword" placeholder="*************** ">
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-md-2">
-								<input class="submit" type="submit" value="change">
+								<input class="submit" name="update_password" type="submit" value="change">
 							</div>
 						</div>	
 					</form>

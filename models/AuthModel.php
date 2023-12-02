@@ -19,6 +19,7 @@ class AuthModel
 
 		if ($username == $data['username'] and $password == $data['password']) {
 			session_start();
+			$_SESSION['user_id'] 	= $data['user_id'];
 			$_SESSION['name'] 		= $data['name'];
 			$_SESSION['username']   = $data['username'];
 			$_SESSION['is_login'] 	= true;
