@@ -120,7 +120,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <?php  } ?>
                             </tbody>
                         </table>
                     </div>
@@ -181,7 +180,8 @@
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+                <?php } 
+                }?>
             </section>
         </div>
     </div>
