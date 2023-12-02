@@ -22,6 +22,10 @@
                 </div>
             </div>
         </div>
+        <?php
+        include "./koneksi.php";
+        $result = mysqli_query($conn, "select * from tb_user");
+        ?>
         <section class="section">
             <div class="card">
                 <div class="card-body">
@@ -36,17 +40,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <div class="d-flex gap-2">
-                                        <a href=""><button class="btn btn-danger">Hapus</button></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            $no = 1;
+                            while ($data = mysqli_fetch_array($result)) {
+                            ?>
+                                <tr>
+                                    <td><?php echo $no++ ?></td>
+                                    <td><?php echo $data['name']; ?></td>
+                                    <td><?php echo $data['username']; ?></td>
+                                    <td><?php echo $data['role']; ?></td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a href="./models/proseshapususer.php ?id=<?php echo $data['user_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('delete?');">Hapus</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php  } ?>
                         </tbody>
                     </table>
                 </div>
