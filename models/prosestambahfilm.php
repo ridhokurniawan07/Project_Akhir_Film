@@ -28,15 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '<script>alert("Format file tidak diizinkan")</script>';
 
     }else{
-     //jika format file sesuai dengan yang ada di dalam array tipe diizinkan
-    //proses upload file sekaligus insert ke database
-    $upload = move_uploaded_file($tmp_name, './images/film/' .$newname);
-    var_dump($upload);
-    exit;
-    if ($upload) {
+        //jika format file sesuai dengan yang ada di dalam array tipe diizinkan
+        //proses upload file sekaligus insert ke database
+        move_uploaded_file($tmp_name, '../images/film/' .$newname);
         // Masukkan data ke dalam tabel tb_film
+        
         $query_insert_film = "INSERT INTO tb_film (genre_id, film_name, film_release, film_description, film_image) 
-            VALUES ('$genre_id', '$film_name', '$film_release', '$film_description', '$newname')";
+        VALUES ('$genre_id', '$film_name', '$film_release', '$film_description', '$newname')";
 
         if (mysqli_query($conn, $query_insert_film)) {
         // Ambil ID film yang baru saja dimasukkan
@@ -51,12 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
         echo "Error: " . $query_insert_film . "<br>" . mysqli_error($conn);
         }
-    } else {
-        echo "Error: " . $query_insert_film . "<br>" . mysqli_error($conn);
     }
-}
-
-    
 }
 
 // Tutup koneksi

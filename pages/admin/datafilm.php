@@ -117,20 +117,19 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    include "./koneksi.php";
+                                        include "./koneksi.php";
 
-                                    $query = "SELECT tb_film.film_id, tb_film.film_name, tb_genre.genre_name, tb_film.film_release, tb_film.film_description, GROUP_CONCAT(tb_actor.name_actor) 
-                                    AS actors, tb_film.film_image
-                                    FROM tb_film
-                                    LEFT JOIN tb_genre ON tb_film.genre_id = tb_genre.genre_id
-                                    LEFT JOIN tb_film_actor ON tb_film.film_id = tb_film_actor.film_id
-                                    LEFT JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
-                                    GROUP BY tb_film.film_id";
-                                    $result = mysqli_query($conn, $query);
-                                    $no = 1;
-                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $query = "SELECT tb_film.film_id, tb_film.film_name, tb_genre.genre_name, tb_film.film_release, tb_film.film_description, GROUP_CONCAT(tb_actor.name_actor) 
+                                        AS actors, tb_film.film_image
+                                        FROM tb_film
+                                        LEFT JOIN tb_genre ON tb_film.genre_id = tb_genre.genre_id
+                                        LEFT JOIN tb_film_actor ON tb_film.film_id = tb_film_actor.film_id
+                                        LEFT JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
+                                        GROUP BY tb_film.film_id";
+                                        $result = mysqli_query($conn, $query);
+                                        $no = 1;
+                                        while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-
                                         <tr>
                                             <td><?php echo $no; ?></td>
                                             <td><?php echo $row['film_name']; ?></td>
@@ -196,15 +195,15 @@
                                             <div class="form-group">
                                                 <select class="choices form-select multiple-remove" name="actors[]" multiple="multiple">
                                                     <?php
-                                                    $selectedActors = array();
-                                                    $film_id = $row['film_id'];
-                                                    $queryActorsForFilm = mysqli_query($conn, "SELECT tb_actor.name_actor FROM tb_film_actor 
-                                                    INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
-                                                    WHERE tb_film_actor.film_id = $film_id");
-                                                    while ($rowActor = mysqli_fetch_assoc($queryActorsForFilm)) {
-                                                        $selected = (in_array($rowActor['name_actor'], $selectedActors)) ? "selected" : "";
-                                                        echo "<option value='{$rowActor['name_actor']}' $selected>{$rowActor['name_actor']}</option>";
-                                                    }
+                                                        $selectedActors = array();
+                                                        $film_id = $row['film_id'];
+                                                        $queryActorsForFilm = mysqli_query($conn, "SELECT tb_actor.name_actor FROM tb_film_actor 
+                                                        INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
+                                                        WHERE tb_film_actor.film_id = $film_id");
+                                                        while ($rowActor = mysqli_fetch_assoc($queryActorsForFilm)) {
+                                                            $selected = (in_array($rowActor['name_actor'], $selectedActors)) ? "selected" : "";
+                                                            echo "<option value='{$rowActor['name_actor']}' $selected>{$rowActor['name_actor']}</option>";
+                                                        }
                                                     ?>
                                                 </select>
                                             </div>
