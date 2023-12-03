@@ -21,8 +21,6 @@
 					<script language="javascript">
 						alert("Register Success!!!, Please Login")
 					</script>';
-                    
-                    header('location:#');
                 } else {
                     echo '
 					<script language="javascript">

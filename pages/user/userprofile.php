@@ -84,7 +84,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero-ct">
-					<h1><?= $userProfile['name'] ?>’s profile</h1>
+					<h1><?= $userProfile['nameΩ'] ?>’s profile</h1>
 					<ul class="breadcumb">
 						<li class="active"><a href="./">Home</a></li>
 						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
@@ -101,7 +101,7 @@
 				<div class="user-information">
 					<div class="user-img">
 						<form method="POST" enctype="multipart/form-data">
-							<a href="#"><img style="border-radius: 50%; width: 150px; aspect-ratio: 1 / 1; " src="images/profile/<?= $userProfile['gambar'] ?>" alt=""><br></a>
+							<a href="#"><img style="border-radius: 50%; width: 150px; aspect-ratio: 1 / 1; " src="images/profile/<?= $userProfile['gambar'] ?>" alt="image profile"><br></a>
 							<a href="#" class="redbtn" id='input-profile-button'>Change avatar</a>
 							<input type="file" name="image_profile" class="hidden" id='input-profile' onchange="checkImageSelected()">
 							<button class="hidden" name="update_image" id="update-image-button"></button>
