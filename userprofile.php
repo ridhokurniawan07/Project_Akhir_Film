@@ -1,4 +1,11 @@
 <?php 
+include_once 'models/AuthModel.php';
+
+$authModel = new AuthModel();
+if ($authModel->isUserAlreadyLogin() == false) {
+    header('location:./');
+}
+
 $pageName = "User Profile";
 include_once './components/layer/header.php';
 include_once './components/loader/loader.php';

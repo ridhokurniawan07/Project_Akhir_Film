@@ -51,23 +51,30 @@
 
 	if (isset($_POST['update_image'])) {
 		$temp = $_FILES['image_profile']['tmp_name'];
-		$imageProfile = 'profile' . $_FILES['image_profile']['name'] . rand(0, 9999);
+		$imageProfile = 'profile-'. rand(0, 9999) . $_FILES['image_profile']['name'];
 		$size = $_FILES['image_profile']['size'];
 		$type = $_FILES['image_profile']['type'];
-		$folder = "images/profile";
+		$folder = "images/profile/";
 
 		if (($type == 'image/jpeg' or $type == 'image/png')) {
-			move_uploaded_file($temp, $folder . $imageProfile);
-			if ($userModel->requestUpdatePhoto($imageProfile)) {
-				$userProfile = $userModel->requestDetail();
+			if (move_uploaded_file($temp, $folder . $imageProfile)) {
+				if ($userModel->requestUpdatePhoto($imageProfile)) {
+					$userProfile = $userModel->requestDetail();
+					echo '
+					<script language="javascript">
+						alert("Update Profile Success!!!")
+					</script>';
+				} else {
+					echo '
+					<script language="javascript">
+						alert("Update Profile Failed!!!")
+					</script>';				}
+			} else {
 				echo '
 				<script language="javascript">
-					alert("Update Profile Success!!!")
+					alert("Update Profile Failed!!!")
 				</script>';
-			} else {
-				echo '<div class="alert alert-secondary" role="alert">Maaf, Terjadi Kesalahan. Silahkan Coba Lagi</div>';
 			}
-			
 		}
 	}
 ?>
@@ -94,7 +101,7 @@
 				<div class="user-information">
 					<div class="user-img">
 						<form method="POST" enctype="multipart/form-data">
-							<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
+							<a href="#"><img style="border-radius: 50%; width: 150px; aspect-ratio: 1 / 1; " src="images/profile/<?= $userProfile['gambar'] ?>" alt=""><br></a>
 							<a href="#" class="redbtn" id='input-profile-button'>Change avatar</a>
 							<input type="file" name="image_profile" class="hidden" id='input-profile' onchange="checkImageSelected()">
 							<button class="hidden" name="update_image" id="update-image-button"></button>

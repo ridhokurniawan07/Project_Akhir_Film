@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     if ($action == "logout") {
         $current_page = basename($_SERVER['PHP_SELF']);
         $authModel->requestLogout();
-        header('location:'.$current_page);
+        header('location:./'.$current_page);
     }
 }
 ?>

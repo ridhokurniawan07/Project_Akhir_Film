@@ -12,6 +12,16 @@ class AuthModel
 		}
 	}
 
+	public function isUsernameAlreadyExist($username) {
+		$dBConnect = new DBConnect();
+		$query = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE username='$username'");
+		if (isset($query)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function requestLogin($username, $password) {
 		$dBConnect = new DBConnect();
 		$dataSql = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE username='$username' AND password='$password'");
