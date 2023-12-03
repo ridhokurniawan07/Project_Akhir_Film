@@ -48,6 +48,28 @@
 		}
         
     }
+
+	if (isset($_POST['update_image'])) {
+		$temp = $_FILES['image_profile']['tmp_name'];
+		$imageProfile = 'profile' . $_FILES['image_profile']['name'] . rand(0, 9999);
+		$size = $_FILES['image_profile']['size'];
+		$type = $_FILES['image_profile']['type'];
+		$folder = "images/profile";
+
+		if (($type == 'image/jpeg' or $type == 'image/png')) {
+			move_uploaded_file($temp, $folder . $imageProfile);
+			if ($userModel->requestUpdatePhoto($imageProfile)) {
+				$userProfile = $userModel->requestDetail();
+				echo '
+				<script language="javascript">
+					alert("Update Profile Success!!!")
+				</script>';
+			} else {
+				echo '<div class="alert alert-secondary" role="alert">Maaf, Terjadi Kesalahan. Silahkan Coba Lagi</div>';
+			}
+			
+		}
+	}
 ?>
 
 <div class="hero user-hero">
@@ -57,7 +79,7 @@
 				<div class="hero-ct">
 					<h1>Edward kennedy’s profile</h1>
 					<ul class="breadcumb">
-						<li class="active"><a href="#">Home</a></li>
+						<li class="active"><a href="./">Home</a></li>
 						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
 					</ul>
 				</div>
@@ -71,13 +93,18 @@
 			<div class="col-md-3 col-sm-12 col-xs-12">
 				<div class="user-information">
 					<div class="user-img">
-						<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
-						<a href="#" class="redbtn">Change avatar</a>
+						<form method="POST" enctype="multipart/form-data">
+							<a href="#"><img src="images/uploads/user-img.png" alt=""><br></a>
+							<a href="#" class="redbtn" id='input-profile-button'>Change avatar</a>
+							<input type="file" name="image_profile" class="hidden" id='input-profile' onchange="checkImageSelected()">
+							<button class="hidden" name="update_image" id="update-image-button"></button>
+						</form>
 					</div>
 					<div class="user-fav">
 						<p>Account Details</p>
 						<ul>
 							<li  class="active"><a href="userprofile.html">Profile</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>

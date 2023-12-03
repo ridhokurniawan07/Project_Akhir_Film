@@ -2,7 +2,7 @@
 <footer class="ht-footer">
 	<div class="container">
 		<div class="flex-parent-ft">
-			<div class="flex-child-ft item1">
+			<div class="flex-child-ft item1 col-md-4">
 				 <a href="index.php"><img class="logo" src="images/logo1.png" alt=""></a>
 				 <p>5th Avenue st, manhattan<br>
 				New York, NY 10001</p>
@@ -63,6 +63,25 @@ if ($isWriteReview) {
 }
 ?>
 
+<script>
+		function openInputImageProfile() {
+			document.getElementById("input-profile").click();
+		}
+
+		document
+		.getElementById("input-profile-button")
+		.addEventListener("click", openInputImageProfile);
+
+		function checkImageSelected() {
+			const fileInput = document.getElementById('input-profile');
+    
+			if (fileInput.files.length > 0) {
+				// File(s) selected
+				document.getElementById("update-image-button").click();
+			} 
+		}
+
+</script>
 
 <script src="js/jquery.js"></script>
 <script src="js/plugins.js"></script>
