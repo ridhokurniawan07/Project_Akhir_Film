@@ -1,6 +1,6 @@
 <?php
     include_once './models/UserModel.php';
-
+	
     $userModel 		= new UserModel();
 	$userProfile 	= $userModel->requestDetail();
 

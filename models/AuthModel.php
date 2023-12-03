@@ -5,6 +5,7 @@ class AuthModel
 {
 	public function isUserAlreadyLogin() {
 		session_start();
+
 		if ($_SESSION['is_login']) {
 			return true;
 		} else {
@@ -15,7 +16,8 @@ class AuthModel
 	public function isUsernameAlreadyExist($username) {
 		$dBConnect = new DBConnect();
 		$query = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE username='$username'");
-		if (isset($query)) {
+		
+		if ($query->fetch_array() != null) {
 			return true;
 		} else {
 			return false;
@@ -28,11 +30,12 @@ class AuthModel
 		$data = $dataSql->fetch_array();
 
 		if ($username == $data['username'] and $password == $data['password']) {
-			session_start();
 			$_SESSION['user_id'] 	= $data['user_id'];
 			$_SESSION['name'] 		= $data['name'];
 			$_SESSION['username']   = $data['username'];
 			$_SESSION['is_login'] 	= true;
+			var_dump($_SESSION['is_login']);
+			// exit;
 			return TRUE;
 		} else {
 			return FALSE;
@@ -43,11 +46,6 @@ class AuthModel
 		$dBConnect = new DBConnect();
 		$query = mysqli_query($dBConnect->connect, "INSERT INTO tb_user (name, gambar, username, email, password, role) VALUES ('$username', '', '$username', '$email', '$password', '$role')");
         if ($query) {
-			session_start();
-			$_SESSION['name'] 		= $username;
-			$_SESSION['username']   = $username;
-			$_SESSION['is_login'] 	= true;
-            $_SESSION['role']       = $role; 
 			return TRUE;
 		} else {
 			return FALSE;

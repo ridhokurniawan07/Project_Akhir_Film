@@ -17,11 +17,12 @@
                 $requestRegister = $authModel->requestRegister($username, $password, $password, $role);
 
                 if ($requestRegister) {
-                    header('location:#');
                     echo '
 					<script language="javascript">
-						alert("Register Success!!!")
+						alert("Register Success!!!, Please Login")
 					</script>';
+                    
+                    header('location:#');
                 } else {
                     echo '
 					<script language="javascript">
