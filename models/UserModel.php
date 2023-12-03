@@ -5,7 +5,6 @@ class UserModel
 {
 	public function requestDetail() {
         $userId = $_SESSION['user_id'];
-        var_dump($userId);
 		$dBConnect = new DBConnect();
 		$data = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE user_id='$userId'");
 		return $data->fetch_array();
