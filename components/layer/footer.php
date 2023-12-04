@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1 col-md-4">
-				 <a href="index.php"><img class="logo" src="images/logo1.png" alt=""></a>
+				 <a href="index.php"><img class="logo" src="images/logo3.png" alt=""></a>
 				 <p>5th Avenue st, manhattan<br>
 				New York, NY 10001</p>
 				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
