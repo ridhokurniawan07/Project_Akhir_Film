@@ -84,7 +84,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero-ct">
-					<h1><?= $userProfile['nameΩ'] ?>’s profile</h1>
+					<h1><?= $userProfile['name'] ?>’s profile</h1>
 					<ul class="breadcumb">
 						<li class="active"><a href="./">Home</a></li>
 						<li> <span class="ion-ios-arrow-right"></span>Profile</li>
