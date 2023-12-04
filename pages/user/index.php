@@ -8,21 +8,30 @@
 				<a href="#"><i class="ion-social-googleplus"></i></a>
 				<a href="#"><i class="ion-social-youtube"></i></a>
 			</div>
+			<?php
+				include "./koneksi.php";
+				$query_all = mysqli_query($conn, "SELECT * FROM `tb_film` JOIN tb_genre ;");
+			?>
+			
 	    	<div  class="slick-multiItemSlider">
+			<?php 
+				while ($row = mysqli_fetch_array($query_all)) { 
+			?>
 	    		<div class="movie-item">
 	    			<div class="mv-img">
-	    				<a href="#"><img src="images/uploads/slider1.jpg" alt="" width="285" height="437"></a>
+	    				<a href="moviesingle.php"><img src='images/<?php echo $row["film_image"]; ?>' alt="" width="285" height="437"></a>
 	    			</div>
 	    			<div class="title-in">
 	    				<div class="cate">
-	    					<span class="blue"><a href="#">Sci-fi</a></span>
+						<span class="blue"><?php echo $row['genre_name']; ?></span>
 	    				</div>
-	    				<h6><a href="#">Interstellar</a></h6>
+						<h6><?php echo $row['film_name']; ?></h6>
 	    				<p><i class="ion-android-star"></i><span>7.4</span> /10</p>
 	    			</div>
 	    		</div>
-				
+				<?php } ?>	
 	    	</div>
+			
 	    </div>
 	</div>
 </div>
@@ -41,7 +50,7 @@
 	</div>
 </div>
 
-<div class="trailers">
+<!-- <div class="trailers">
 	<div class="container">
 		<div class="row ipad-width">
 			<div class="col-md-12">
@@ -87,4 +96,4 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
