@@ -12,6 +12,21 @@ if (isset($_GET['action'])) {
 }
 ?>
 
+<?php
+include_once './models/AuthModel.php';
+
+$authModel = new AuthModel;
+
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
+    if ($action == "logout") {
+        $current_page = basename($_SERVER['PHP_SELF']);
+        $authModel->requestLogout();
+        header('location:' . $current_page);
+    }
+}
+?>
+
 <nav class="navbar navbar-default navbar-custom">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header logo">
