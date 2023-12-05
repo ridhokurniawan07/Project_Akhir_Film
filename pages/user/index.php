@@ -49,13 +49,13 @@
 	</div>
 </div>
 
-<!-- <div class="trailers">
+<div class="trailers">
 	<div class="container">
 		<div class="row ipad-width">
 			<div class="col-md-12">
 				<div class="title-hd">
 					<h2>Trailer</h2>
-					<a href="#" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
+					<a href="moviegrid.php" class="viewall">View all <i class="ion-ios-arrow-right"></i></a>
 				</div>
 				<div class="videos">
 				 	<div class="slider-for-2 video-ft">
@@ -80,19 +80,27 @@
 						
 						
 					</div>
+					<?php
+						include "./koneksi.php";
+						$query_trailer = mysqli_query($conn, "SELECT * FROM `tb_film` LIMIT 4 ;");
+					?>
 					<div class="slider-nav-2 thumb-ft">
+					<?php 
+					while ($row = mysqli_fetch_array($query_trailer)) { 
+					?>
 						<div class="item">
-							<div class="trailer-img">
-								<img src="images/uploads/trailer7.jpg"  alt="photo by Barn Images" width="4096" height="2737">
+							<div class="">
+							<img src='images/<?php echo $row["film_image"]; ?>'  alt="photo by Barn Images" style="width: 50px;height: 70px;">
 							</div>
 							<div class="trailer-infor">
-	                        	<h4 class="desc">Wonder Woman</h4>
+	                        	<h4 class="desc"><?php echo $row['film_name']; ?></h4>
 	                        	<p>2:30</p>
 	                        </div>
 						</div>
+					<?php } ?>	
 					</div>
 				</div>   
 			</div>
 		</div>
 	</div>
-</div> -->
+</div>
