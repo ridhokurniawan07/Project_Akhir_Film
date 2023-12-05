@@ -11,16 +11,33 @@
         $role           = 'user';
         
         if ($password == $rePassword) {
-            $requestRegister = $authModel->requestRegister($username, $password, $password, $role);
+            $isEmailAlreadyExist = $authModel->isUsernameAlreadyExist($username);
+            
+            if (!$isEmailAlreadyExist) {
+                $requestRegister = $authModel->requestRegister($username, $password, $password, $role);
 
-            if ($requestRegister) {
-                header('location:#');
+                if ($requestRegister) {
+                    echo '
+					<script language="javascript">
+						alert("Register Success!!!, Please Login")
+					</script>';
+                } else {
+                    echo '
+					<script language="javascript">
+						alert("Register Failed, please try again!")
+					</script>';                
+                }
             } else {
-                echo '<div class="alert alert-secondary" role="alert">Sorry, Something Wrong. Please Try Again</div>';
+                echo '
+                <script language="javascript">
+                    alert("Register Failed, Username already exist!")
+                </script>';                
             }
         } else {
-            echo '<div class="alert alert-secondary" role="alert">Sorry, Check your password and Try Again</div>';
-        }
+            echo '
+            <script language="javascript">
+                alert("Register Failed, Password doesnt match!")
+            </script>';         }
     }
 ?>
 <div class="login-wrapper"  id="signup-content">

@@ -22,7 +22,7 @@ if (isset($_GET['action'])) {
     if ($action == "logout") {
         $current_page = basename($_SERVER['PHP_SELF']);
         $authModel->requestLogout();
-        header('location:' . $current_page);
+        header('location:./' . $current_page);
     }
 }
 ?>
@@ -38,7 +38,7 @@ if (isset($_GET['action'])) {
                 <span></span>
             </div>
         </div>
-        <a href="./"><img class="logo" src="images/logo1.png" alt="" width="119" height="58" /></a>
+        <a href="./"><img class="logo" src="images/logoo.png" alt="" width="119" height="58" /></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">

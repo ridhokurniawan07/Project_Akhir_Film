@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php 
+if ($pageName != "User Profile") {
+  session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>

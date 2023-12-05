@@ -10,9 +10,15 @@
         $requestLogin = $authModel->requestLogin($username, $password);
 
         if ($requestLogin) {
-            header('location:#');
+            echo '
+            <script language="javascript">
+                alert("Login Success!!!")
+            </script>';      
         } else {
-            echo '<div class="alert" role="alert">Sorry, Login Failed. Please check your email or password</div>';
+            echo '
+            <script language="javascript">
+                alert("Sorry, Login Failed. Please check your email or password!!!")
+            </script>';        
         }
     }
 ?>

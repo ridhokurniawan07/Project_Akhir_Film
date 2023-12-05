@@ -32,8 +32,8 @@ class UserModel
         $userId = $_SESSION['user_id'];
 		$dBConnect = new DBConnect();
         $query = mysqli_query($dBConnect->connect, "UPDATE tb_user  
-                                                SET  image='$image' 
+                                                SET gambar='$image' 
                                                 WHERE user_id='$userId'");
-		return $query;
+        return $query;
 	}
 }
