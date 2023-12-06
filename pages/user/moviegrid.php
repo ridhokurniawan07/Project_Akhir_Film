@@ -1,8 +1,3 @@
-User
-Berikut adalah kode yang diperbaiki untuk memastikan bahwa jumlah film yang ditampilkan sesuai dengan paginasi yang diinginkan:
-
-php
-Copy code
 <?php
 $conn = mysqli_connect("localhost", "root", "", "db_film");
 
