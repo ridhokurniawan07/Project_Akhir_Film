@@ -1,4 +1,4 @@
-<?php
+<?php 
 include_once './models/AuthModel.php';
 
 $authModel = new AuthModel;
@@ -11,6 +11,8 @@ if (isset($_GET['action'])) {
     }
 }
 ?>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 <nav class="navbar navbar-default navbar-custom">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,22 +47,23 @@ if (isset($_GET['action'])) {
             </li>
         </ul>
 
-        <?php
-        if (isset($_SESSION['is_login'])) {
-            echo '
-            <ul class="nav navbar-nav flex-child-menu menu-right">
-                <li class="dropwonfirst"><a href="userprofile.php"><i class="fas fa-user" style="font-size: 20px; margin-top: -10px; margin-right: 10px;"></i></a></li>
+        <ul class="nav navbar-nav flex-child-menu menu-right">
+            <?php 
+            if (isset($_SESSION['is_login'])) {
+                echo '
+                <li class="dropdown first">
+                    <li class="dropwonfirst"><a href="userprofile.php"><i class="fas fa-user" style="font-size: 20px; margin-top: -10px; margin-right: 10px;"></i></a></li></a>
+                </li>
                 <li class="btn"><a href="index.php?action=logout">Logout</a></li>
-                <li class="loginLink hidden"><a id="loginLink" href="#">LOG In</a></li>
-            </ul>';
-        } else {
-            echo '
-            <ul class="nav navbar-nav flex-child-menu menu-right">
+                ';
+            } else {
+                echo '
                 <li class="loginLink"><a id="loginLink" href="#">LOG In</a></li>
                 <li class="btn signupLink"><a href="#">sign up</a></li>
-            </ul>
-            ';
-        } ?>
+                ';
+            }
+            ?>
+        </ul>
     </div>
     <!-- /.navbar-collapse -->
 </nav>
