@@ -15,20 +15,6 @@ if ($pageName != "User Profile") {
   <meta name="author" content="" />
   <link rel="profile" href="#" />
 
-<<<<<<< HEAD
-    <!-- CSS files -->
-    <link rel="stylesheet" href="css/plugins.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <?php 
-      $isWriteReview = $pageName == "Movie Single" ? true : false;
-      if ($isWriteReview) {
-        echo '<link rel="stylesheet" href="css/write-review.css" />';
-      }
-    ?>
-    
-  </head>
-  <body>
-=======
   <!--Google Font-->
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600" />
   <!-- Mobile specific meta -->
@@ -49,4 +35,3 @@ if ($pageName != "User Profile") {
 </head>
 
 <body>
->>>>>>> 87fa4801c169a9698930fbdf331fcb29db6179cd
