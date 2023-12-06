@@ -32,7 +32,7 @@
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th style="width: 5%;">No</th>
                                 <th>Name</th>
                                 <th>Username</th>
                                 <th>Role</th>

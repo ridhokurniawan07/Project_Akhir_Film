@@ -65,8 +65,6 @@
                     </a>
                 </li>
 
-                <li class="sidebar-title">Sign-Out</li>
-
                 <div class="sidebar-item  has-sub"></div>
                 <a href="./logout.php" class='sidebar-link'>
                     <i class="bi bi-hexagon-fill"></i>

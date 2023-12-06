@@ -4,15 +4,15 @@
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1 col-md-4">
 				<a href="index.php"><img class="logo" src="images/logoo.png" alt=""></a>
-				<p>5th Avenue st, manhattan<br>
-					New York, NY 10001</p>
-				<p>Call us: <a href="#">(+01) 202 342 6789</a></p>
+				<p>Kelompok 6<br>
+					Indonesia , 2023 </p>
+				<p>Call us: <a href="#">(+62) 857 994 6789</a></p>
 			</div>
 			<div class="flex-child-ft item2">
 				<h4>Resources</h4>
 				<ul>
 					<li><a href="#">About</a></li>
-					<li><a href="#">Blockbuster</a></li>
+					<li><a href="#">Movie</a></li>
 					<li><a href="#">Contact Us</a></li>
 					<li><a href="#">Forums</a></li>
 					<li><a href="#">Blog</a></li>
@@ -47,9 +47,6 @@
 		</div>
 	</div>
 	<div class="ft-copyright">
-		<div class="ft-left">
-			<p><a target="_blank" href="https://www.templateshub.net">Templates Hub</a></p>
-		</div>
 		<div class="backtotop">
 			<p><a href="#" id="back-to-top">Back to top <i class="ion-ios-arrow-thin-up"></i></a></p>
 		</div>

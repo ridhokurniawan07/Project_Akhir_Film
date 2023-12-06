@@ -46,7 +46,7 @@ $total_movies = $total_movies_row['total_movies'];
                         $average_rating = number_format($average_rating_row['avg_rating'], 1);
                     ?>
                         <div class="movie-item-style-2 movie-item-style-1">
-                            <img src="images/uploads/<?php echo $row['film_image']; ?>" alt="" />
+                            <img src="images/film/<?php echo $row['film_image']; ?>" alt="" />
                             <div class="hvr-inner">
                                 <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
                                     Read more <i class="ion-android-arrow-dropright"></i>

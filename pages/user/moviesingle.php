@@ -52,7 +52,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="row ipad-width2">
             <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="movie-img sticky-sb">
-                    <img src="images/uploads/<?php echo $row['film_image']; ?>" alt="" />
+                    <img src="images/film/<?php echo $row['film_image']; ?>" alt="" />
                     <div class="movie-btn">
                         <div class="btn-transform transform-vertical red">
                             <div>
@@ -122,7 +122,7 @@ if (isset($_SESSION['user_id'])) {
                         <div class="tabs">
                             <ul class="tab-links tabs-mv">
                                 <li class="active"><a href="#overview">Overview</a></li>
-                                <li><a href="#reviews"> Reviews</a></li>
+                                <li><a href="#reviews"> Reviewss</a></li>
                                 <li><a href="#cast"> Cast</a></li>
                             </ul>
                             <div class="tab-content">
@@ -130,7 +130,7 @@ if (isset($_SESSION['user_id'])) {
                                     <div class="row">
                                         <div class="col-md-8 col-sm-12 col-xs-12">
                                             <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam doloribus delectus maiores illum nesciunt neque eveniet ducimus, aliquam minima, reprehenderit eaque et expedita. Eius exercitationem, consequuntur sint impedit culpa aperiam.
+                                            <?php echo $row['film_description']; ?>
                                             </p>
                                             <div class="title-hd-sm">
                                                 <h4>cast</h4>
@@ -143,8 +143,8 @@ if (isset($_SESSION['user_id'])) {
                                                 // Fetch actors for the current film from the database
                                                 $film_id = $row['film_id'];
                                                 $actors_query = "SELECT tb_actor.name_actor, tb_actor.foto FROM tb_film_actor
-                INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
-                WHERE tb_film_actor.film_id = $film_id";
+                                                INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
+                                                WHERE tb_film_actor.film_id = $film_id";
                                                 $actors_result = mysqli_query($conn, $actors_query);
 
                                                 while ($actor_row = mysqli_fetch_assoc($actors_result)) {
@@ -166,8 +166,8 @@ if (isset($_SESSION['user_id'])) {
                                                     // Fetch actors for the current film from the database
                                                     $film_id = $row['film_id'];
                                                     $actors_query = "SELECT tb_actor.name_actor FROM tb_film_actor
-                        INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
-                        WHERE tb_film_actor.film_id = $film_id";
+                                                    INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
+                                                    WHERE tb_film_actor.film_id = $film_id";
                                                     $actors_result = mysqli_query($conn, $actors_query);
 
                                                     // Loop through actors to generate the cast list
@@ -184,8 +184,8 @@ if (isset($_SESSION['user_id'])) {
                                                     include "./koneksi.php";
                                                     $film_id = $row['film_id'];
                                                     $genres_query = "SELECT tb_genre.genre_name FROM tb_film
-                        INNER JOIN tb_genre ON tb_film.genre_id = tb_genre.genre_id
-                        WHERE tb_film.film_id = $film_id";
+                                                    INNER JOIN tb_genre ON tb_film.genre_id = tb_genre.genre_id
+                                                    WHERE tb_film.film_id = $film_id";
                                                     $genres_result = mysqli_query($conn, $genres_query);
 
                                                     // Loop through genres to generate the genre list
@@ -271,8 +271,8 @@ if (isset($_SESSION['user_id'])) {
                                 include "./koneksi.php";
                                 $film_id = $row['film_id'];
                                 $reviews_query = "SELECT r.*, u.username AS user_name, u.gambar AS user_avatar FROM tb_review r
-                  JOIN tb_user u ON r.user_id = u.user_id
-                  WHERE r.film_id = $film_id";
+                                JOIN tb_user u ON r.user_id = u.user_id
+                                WHERE r.film_id = $film_id";
                                 $reviews_result = mysqli_query($conn, $reviews_query);
                                 ?>
 
@@ -353,8 +353,8 @@ if (isset($_SESSION['user_id'])) {
                                             include "./koneksi.php";
                                             $film_id = $row['film_id'];
                                             $actors_query = "SELECT tb_actor.name_actor, tb_actor.foto FROM tb_film_actor
-                 INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
-                 WHERE tb_film_actor.film_id = $film_id";
+                                            INNER JOIN tb_actor ON tb_film_actor.actor_id = tb_actor.actor_id
+                                            WHERE tb_film_actor.film_id = $film_id";
 
                                             $actors_result = mysqli_query($conn, $actors_query);
 
