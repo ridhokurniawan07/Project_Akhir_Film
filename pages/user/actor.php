@@ -30,7 +30,7 @@
 						<option value="date">Release date Ascending</option>
 					</select>
 					<a href="actorsingle.php" class="list"><i class="ion-ios-list-outline "></i></a>
-					<a  href="actor.php" class="grid"><i class="ion-grid active"></i></a>
+					<a href="actor.php" class="grid"><i class="ion-grid active"></i></a>
 				</div>
 				<div class="celebrity-items">
 					<div class="ceb-item">
@@ -40,7 +40,7 @@
 							<span>actor, usa</span>
 						</div>
 					</div>
-					
+
 				</div>
 				<div class="topbar-filter">
 					<label>Reviews per page:</label>
@@ -48,7 +48,7 @@
 						<option value="range">9 Reviews</option>
 						<option value="saab">10 Reviews</option>
 					</select>
-					
+
 					<div class="pagination2">
 						<span>Page 1 of 6:</span>
 						<a class="active" href="#">1</a>
@@ -63,7 +63,7 @@
 			</div>
 			<div class="col-md-3 col-xs-12 col-sm-12">
 				<div class="sidebar">
-						<div class="searh-form">
+					<div class="searh-form">
 						<h4 class="sb-title">Search celebrity</h4>
 						<form class="form-style-1 celebrity-form" action="#">
 							<div class="row">
@@ -71,7 +71,7 @@
 									<label>Celebrity name</label>
 									<input type="text" placeholder="Enter keywords">
 								</div>
-								
+
 								<div class="col-md-12 ">
 									<input class="submit" type="submit" value="submit">
 								</div>
@@ -81,7 +81,7 @@
 					<div class="ads">
 						<img src="images/uploads/ads1.png" alt="">
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
