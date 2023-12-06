@@ -35,7 +35,7 @@
                         <table class="table table-striped" id="table1">
                             <thead>
                                 <tr>
-                                    <th>No</th>
+                                    <th style="width: 5%;">No</th>
                                     <th>Nama Genre</th>
                                     <th>Aksi</th>
                                 </tr>

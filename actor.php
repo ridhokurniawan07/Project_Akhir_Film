@@ -7,4 +7,5 @@ include_once './components/modals/register.php';
 include_once './components/layer/header_page.php';
 include_once './pages/user/actor.php';
 include_once './components/layer/footer.php'; 
+
 ?>
