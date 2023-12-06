@@ -1,52 +1,66 @@
+User
+Berikut adalah kode yang diperbaiki untuk memastikan bahwa jumlah film yang ditampilkan sesuai dengan paginasi yang diinginkan:
+
+php
+Copy code
+<?php
+$conn = mysqli_connect("localhost", "root", "", "db_film");
+
+// Tentukan jumlah film yang ditampilkan per halaman
+$movies_per_page = 8;
+
+// Tentukan halaman saat ini, defaultnya 1
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+// Hitung offset untuk query database
+$offset = ($page - 1) * $movies_per_page;
+
+// Query database dengan LIMIT dan OFFSET untuk film
+$movie_query = mysqli_query($conn, "SELECT * FROM tb_film LIMIT $movies_per_page OFFSET $offset");
+
+// Hitung total jumlah film
+$total_movies_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_film");
+$total_movies = mysqli_fetch_row($total_movies_query)[0];
+
+// Hitung total jumlah halaman
+$total_pages = ceil($total_movies / $movies_per_page);
+?>
+
 <div class="hero common-hero">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="hero-ct">
-                    <h1>movie listing</h1>
+                    <h1>Movie Listing</h1>
                     <ul class="breadcumb">
                         <li class="active"><a href="#">Home</a></li>
-                        <li><span class="ion-ios-arrow-right"></span> movie listing</li>
+                        <li><span class="ion-ios-arrow-right"></span> Movie Listing</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php
-// ... (Previous code remains unchanged)
 
-// Fetch the total number of movies from the database
-include "./koneksi.php";
-$total_movies_query = "SELECT COUNT(*) as total_movies FROM tb_film";
-$total_movies_result = mysqli_query($conn, $total_movies_query);
-$total_movies_row = mysqli_fetch_assoc($total_movies_result);
-$total_movies = $total_movies_row['total_movies'];
-?>
 <div class="page-single">
     <div class="container">
         <div class="row ipad-width">
             <div class="col-md-8 col-sm-12 col-xs-12">
                 <div class="topbar-filter">
                     <p>Found <span><?php echo $total_movies; ?> movies</span> in total</p>
-
                     <a href="moviegrid.php" class="grid"><i class="ion-grid active"></i></a>
                 </div>
                 <div class="flex-wrap-movielist">
                     <?php
-                    include "./koneksi.php";
-                    $result = mysqli_query($conn, "SELECT * FROM tb_film");
-                    while ($row = mysqli_fetch_assoc($result)) {
+                    while ($row = mysqli_fetch_assoc($movie_query)) {
                         $film_id = $row['film_id'];
                         $average_rating_query = "SELECT AVG(rating) as avg_rating FROM tb_review WHERE film_id = $film_id";
                         $average_rating_result = mysqli_query($conn, $average_rating_query);
                         $average_rating_row = mysqli_fetch_assoc($average_rating_result);
-
-                        // Format the average rating to display only one decimal place
                         $average_rating = number_format($average_rating_row['avg_rating'], 1);
                     ?>
                         <div class="movie-item-style-2 movie-item-style-1">
-                            <img src="images/film/<?php echo $row['film_image']; ?>" alt="" />
+                            <img src="images/<?php echo $row['film_image']; ?>" alt="" />
                             <div class="hvr-inner">
                                 <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
                                     Read more <i class="ion-android-arrow-dropright"></i>
@@ -64,17 +78,20 @@ $total_movies = $total_movies_row['total_movies'];
                 <div class="topbar-filter">
                     <label>Movies per page:</label>
                     <select>
-                        <option value="range">20 Movies</option>
-                        <option value="saab">10 Movies</option>
+                        <option value="range">8 Movies</option>
+                        <option value="saab">16 Movies</option>
                     </select>
                     <div class="pagination2">
-                        <span>Page 1 of 2:</span>
-                        <a class="active" href="#">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">...</a>
-                        <a href="#">78</a>
-                        <a href="#">79</a>
+                        <span>Page <?php echo $page; ?> of <?php echo $total_pages; ?>:</span>
+                        <?php
+                        for ($i = 1; $i <= $total_pages; $i++) {
+                            echo "<a href='moviegrid.php?page=$i'";
+                            if ($i == $page) {
+                                echo " class='active'";
+                            }
+                            echo ">$i</a>";
+                        }
+                        ?>
                         <a href="#"><i class="ion-arrow-right-b"></i></a>
                     </div>
                 </div>

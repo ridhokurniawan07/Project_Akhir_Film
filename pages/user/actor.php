@@ -62,7 +62,7 @@ $total_pages = ceil($total_actors / $actors_per_page);
                     if ($actor_query !== null) {
                         if (mysqli_num_rows($actor_query) > 0) {
                             while ($actor = mysqli_fetch_array($actor_query)) {
-                                ?>
+                    ?>
                                 <!-- celebrity items -->
                                 <div class="ceb-item">
                                     <a href="actorsingle.php?id=<?php echo $actor['actor_id']; ?>">
@@ -74,7 +74,7 @@ $total_pages = ceil($total_actors / $actors_per_page);
                                     </div>
                                 </div>
                                 <!-- end celebrity items -->
-                            <?php
+                    <?php
                             }
                         } else {
                             echo "No actors found.";

@@ -158,7 +158,7 @@
                                                 <td><?php echo date_format(date_create($row["film_release"]), 'd/m/Y'); ?></td>
                                                 <td><?php echo $row["film_description"]; ?></td>
                                                 <td><?php echo $row["actors"]; ?></td>
-                                                <td> <img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' style='width: 50px; height: auto;'></td>
+                                                <td> <img src='images/<?php echo $row["film_image"]; ?>' alt='Film Image' style='width: 50px; height: auto;'></td>
                                                 <td>
                                                     <div class="d-flex gap-2">
                                                         <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editForm<?php echo $row['film_id']; ?>">Edit</button>
@@ -225,7 +225,7 @@
                                                     <input type="file" name="film_image" class="form-control-file">
                                                     <?php
                                                     $gambarFilm = $row['film_image']; // Ganti dengan kolom yang sesuai pada tabel film
-                                                    echo "<img src='images/film/{$gambarFilm}' alt='Gambar Film' class='mt-1' style='max-width: 50px;'>";
+                                                    echo "<img src='images/{$gambarFilm}' alt='Gambar Film' class='mt-1' style='max-width: 50px;'>";
                                                     ?>
                                                 </div>
                                             </div>
