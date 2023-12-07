@@ -36,9 +36,8 @@ class AuthModel
 			$_SESSION['user_id'] 	= $data['user_id'];
 			$_SESSION['name'] 		= $data['name'];
 			$_SESSION['username']   = $data['username'];
+			$_SESSION['role']		= $data['role'];
 			$_SESSION['is_login'] 	= true;
-			var_dump($_SESSION['is_login']);
-			// exit;
 			return TRUE;
 		} else {
 			return FALSE;
