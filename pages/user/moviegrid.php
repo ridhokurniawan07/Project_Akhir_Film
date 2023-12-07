@@ -10,17 +10,48 @@ $page = isset($_GET['page']) ? $_GET['page'] : 1;
 // Hitung offset untuk query database
 $offset = ($page - 1) * $movies_per_page;
 
-// Query database dengan LIMIT dan OFFSET untuk film
-$movie_query = mysqli_query($conn, "SELECT * FROM tb_film LIMIT $movies_per_page OFFSET $offset");
+// Build the WHERE clause for search conditions
+$where_conditions = array();
 
-// Hitung total jumlah film
-$total_movies_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_film");
-$total_movies = mysqli_fetch_row($total_movies_query)[0];
+if (!empty($_GET['search_movie'])) {
+    $search_movie = mysqli_real_escape_string($conn, $_GET['search_movie']);
+    $where_conditions[] = "LOWER(film_name) LIKE LOWER('%$search_movie%')";
+}
+
+// Add conditions for genre and rating range if provided
+// Adjust the column names based on your database structure
+if (!empty($_GET['genres'])) {
+    $genre_ids = implode(",", $_GET['genres']);
+    $where_conditions[] = "genre_id IN ($genre_ids)";
+}
+
+if (!empty($_GET['rating_range'])) {
+    $rating_range = (float)$_GET['rating_range'];
+    $where_conditions[] = "film_id IN (SELECT film_id FROM tb_review GROUP BY film_id HAVING ROUND(AVG(rating), 1) = $rating_range)";
+}
+
+// Build the WHERE clause
+$where_clause = !empty($where_conditions) ? "WHERE " . implode(" AND ", $where_conditions) : "";
+
+// Query database dengan LIMIT dan OFFSET untuk film
+if (!empty($where_clause)) {
+    $movie_query = mysqli_query($conn, "SELECT * FROM tb_film $where_clause LIMIT $movies_per_page OFFSET $offset");
+
+    // Hitung total jumlah film
+    $total_movies_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_film $where_clause");
+    $total_movies = mysqli_fetch_row($total_movies_query)[0];
+} else {
+    // Jika tidak ada kriteria pencarian, tampilkan semua film
+    $movie_query = mysqli_query($conn, "SELECT * FROM tb_film LIMIT $movies_per_page OFFSET $offset");
+
+    // Hitung total jumlah film
+    $total_movies_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_film");
+    $total_movies = mysqli_fetch_row($total_movies_query)[0];
+}
 
 // Hitung total jumlah halaman
 $total_pages = ceil($total_movies / $movies_per_page);
 ?>
-
 <div class="hero common-hero">
     <div class="container">
         <div class="row">
@@ -95,11 +126,11 @@ $total_pages = ceil($total_movies / $movies_per_page);
                 <div class="sidebar">
                     <div class="searh-form">
                         <h4 class="sb-title">Search for movie</h4>
-                        <form class="form-style-1" action="#" method="post">
+                        <form class="form-style-1" action="moviegrid.php" method="get">
                             <div class="row">
                                 <div class="col-md-12 form-it">
                                     <label>Movie name</label>
-                                    <input type="text" placeholder="Enter keywords" />
+                                    <input type="text" name="search_movie" placeholder="Enter keywords" />
                                 </div>
                                 <div class="col-md-12 form-it">
                                     <label>Genre</label>
@@ -130,7 +161,7 @@ $total_pages = ceil($total_movies / $movies_per_page);
                                 <div class="col-md-12 form-it">
                                     <label>Rating Range</label>
                                     <select name="rating_range">
-                                        <option value="range">-- Select the rating range below --</option>
+                                        <option value="">-- Select the rating range below --</option>
                                         <?php
                                         // Loop through ratings from 1 to 10 to generate dropdown options
                                         for ($rating_value = 1; $rating_value <= 10; $rating_value++) {
@@ -139,59 +170,9 @@ $total_pages = ceil($total_movies / $movies_per_page);
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-md-12 form-it">
-                                    <label>Release Year</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <select name="release_year_from">
-                                                <option value="range">From</option>
-                                                <?php
-                                                // Include your database connection file
-                                                include "./koneksi.php";
 
-                                                // Fetch unique release years with a gap of 5 years from the tb_film table
-                                                $release_years_query = "SELECT DISTINCT YEAR(film_release) AS release_year 
-                                       FROM tb_film 
-                                       WHERE film_release IS NOT NULL 
-                                       ORDER BY release_year ASC";
-                                                $release_years_result = mysqli_query($conn, $release_years_query);
-
-                                                // Loop through unique release years to generate dropdown options
-                                                while ($release_year_row = mysqli_fetch_assoc($release_years_result)) {
-                                                    $release_year_value = $release_year_row['release_year'];
-                                                    echo "<option value='$release_year_value'>$release_year_value</option>";
-                                                }
-
-                                                // Close the database connection
-                                                mysqli_close($conn);
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <select name="release_year_to">
-                                                <option value="range">To</option>
-                                                <?php
-                                                // Reopen the database connection if needed
-                                                include "./koneksi.php";
-
-                                                // Re-fetch unique release years with a gap of 5 years from the tb_film table
-                                                $release_years_result = mysqli_query($conn, $release_years_query);
-
-                                                // Loop through unique release years to generate dropdown options
-                                                while ($release_year_row = mysqli_fetch_assoc($release_years_result)) {
-                                                    $release_year_value = $release_year_row['release_year'];
-                                                    echo "<option value='$release_year_value'>$release_year_value</option>";
-                                                }
-
-                                                // Close the database connection
-                                                mysqli_close($conn);
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-md-12">
-                                    <input class="submit" type="submit" value="submit" />
+                                    <input class="submit" type="submit" value="Submit" />
                                 </div>
                             </div>
                         </form>

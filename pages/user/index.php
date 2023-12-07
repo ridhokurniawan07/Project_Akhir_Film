@@ -20,22 +20,23 @@
 					$average_rating_query = "SELECT AVG(rating) as avg_rating FROM tb_review WHERE film_id = $film_id";
 					$average_rating_result = mysqli_query($conn, $average_rating_query);
 					$average_rating_row = mysqli_fetch_assoc($average_rating_result);
-					
+
 					// Format the average rating to display only one decimal place
 					$average_rating = number_format($average_rating_row['avg_rating'], 1);
 				?>
 					<div class="movie-item">
 						<a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
-						<div class="mv-img">
-							<img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
-						</div> </a>
+							<div class="mv-img">
+								<img src='images/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
+							</div>
+						</a>
 						<div class="title-in">
 							<div class="cate">
 								<span class="blue"><?php echo $row['film_name']; ?></span>
 							</div>
 							<p class="rate">
-                                    <i class="ion-android-star"></i><span><?php echo $average_rating; ?></span> / 10
-                            </p>
+								<i class="ion-android-star"></i><span><?php echo $average_rating; ?></span> / 10
+							</p>
 						</div>
 					</div>
 				<?php } ?>
@@ -81,7 +82,7 @@
 						<div>
 							<iframe class="item-video" src="#" data-src="https://www.youtube.com/embed/2kLyUtVedxo?si=npHKZnG2hLXXb7TZ"></iframe>
 						</div>
-						
+
 
 
 					</div>
@@ -95,7 +96,7 @@
 						?>
 							<div class="item">
 								<div class="">
-									<img src='images/film/<?php echo $row["film_image"]; ?>' alt="photo by Barn Images" style="width: 50px;height: 70px;">
+									<img src='images/<?php echo $row["film_image"]; ?>' alt="photo by Barn Images" style="width: 50px;height: 70px;">
 								</div>
 								<div class="trailer-infor">
 									<h4 class="desc"><?php echo $row['film_name']; ?></h4>

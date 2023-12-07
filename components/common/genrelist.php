@@ -29,7 +29,7 @@
                         <div class="slide-it">
                             <div class="flex-wrap-movielist">
                                 <div class="movie-item-style-2 movie-item-style-1">
-                                    <img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
+                                    <img src='images/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
                                     <div class="hvr-inner">
                                         <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
                                             Read more <i class="ion-android-arrow-dropright"></i>
@@ -69,7 +69,7 @@
                         <div class="slide-it">
                             <div class="flex-wrap-movielist">
                                 <div class="movie-item-style-2 movie-item-style-1">
-                                    <img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
+                                    <img src='images/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
                                     <div class="hvr-inner">
                                         <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
                                             Read more <i class="ion-android-arrow-dropright"></i>
@@ -110,11 +110,11 @@
                                 <div class="movie-item-style-2 movie-item-style-1">
                                     <img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
                                     <div class="hvr-inner">
-                                    <div class="hvr-inner">
-                                        <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
-                                            Read more <i class="ion-android-arrow-dropright"></i>
-                                        </a>
-                                    </div>
+                                        <div class="hvr-inner">
+                                            <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
+                                                Read more <i class="ion-android-arrow-dropright"></i>
+                                            </a>
+                                        </div>
                                     </div>
                                     <div class="mv-item-infor">
                                         <h6><a href="#"><?php echo $row['film_name']; ?></a></h6>
