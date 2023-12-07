@@ -1,8 +1,7 @@
 <?php
-    $hostname ='localhost';
-    $username  ='root';
-    $password   ='';
-    $dbname     ='db_film';
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "db_film";
 
-    $conn = mysqli_connect($hostname, $username, $password, $dbname) or die ('Gagal Terhubung ke database');
-?>
+$conn = new mysqli($host, $user, $pass, $db);
