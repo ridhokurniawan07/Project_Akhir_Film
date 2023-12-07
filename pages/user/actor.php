@@ -1,23 +1,20 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "db_film");
-
-// Tentukan jumlah aktor yang ditampilkan per halaman
 $actors_per_page = 9;
-
-// Tentukan halaman saat ini, defaultnya 1
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
-
-// Hitung offset untuk query database
 $offset = ($page - 1) * $actors_per_page;
 
-// Query database dengan LIMIT dan OFFSET
-$actor_query = mysqli_query($conn, "SELECT * FROM tb_actor LIMIT $actors_per_page OFFSET $offset");
+// Mendapatkan nilai pencarian dan membersihkannya
+$search_query = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
 
-// Hitung jumlah total aktor
-$total_actors_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_actor");
+// Query untuk mengambil data aktor sesuai dengan pencarian
+$actor_query = mysqli_query($conn, "SELECT * FROM tb_actor WHERE name_actor LIKE '%$search_query%' LIMIT $actors_per_page OFFSET $offset");
+
+// Query untuk menghitung total aktor sesuai dengan pencarian
+$total_actors_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_actor WHERE name_actor LIKE '%$search_query%'");
 $total_actors = mysqli_fetch_row($total_actors_query)[0];
 
-// Hitung jumlah total halaman
+// Menghitung total halaman
 $total_pages = ceil($total_actors / $actors_per_page);
 ?>
 
@@ -42,38 +39,23 @@ $total_pages = ceil($total_actors / $actors_per_page);
     <div class="container">
         <div class="row ipad-width2">
             <div class="col-md-9 col-sm-12 col-xs-12">
-                <div class="topbar-filter">
+                <div class="topbar-filter" style="width: 790px;">
                     <p>Found <span><?php echo $total_actors; ?> celebrities</span> in total</p>
-                    <label>Sort by:</label>
-                    <select>
-                        <option value="popularity">Popularity Descending</option>
-                        <option value="popularity">Popularity Ascending</option>
-                        <option value="rating">Rating Descending</option>
-                        <option value="rating">Rating Ascending</option>
-                        <option value="date">Release date Descending</option>
-                        <option value="date">Release date Ascending</option>
-                    </select>
-                    <a href="actorlist.php" class="list"><i class="ion-ios-list-outline "></i></a>
                     <a href="actor.php" class="grid"><i class="ion-grid active"></i></a>
                 </div>
                 <div class="celebrity-items">
-
                     <?php
                     if ($actor_query !== null) {
                         if (mysqli_num_rows($actor_query) > 0) {
                             while ($actor = mysqli_fetch_array($actor_query)) {
-                    ?>
-                                <!-- celebrity items -->
-                                <div class="ceb-item">
-                                    <a href="actorsingle.php?id=<?php echo $actor['actor_id']; ?>">
-                                        <img src="./images/aktor/<?php echo isset($actor['foto']) ? $actor['foto'] : 'default.jpg'; ?>" alt="<?php echo $actor['name_actor']; ?>">
-                                    </a>
-                                    <div class="ceb-infor">
-                                        <h2><a href=""><?php echo isset($actor['name_actor']) ? $actor['name_actor'] : 'Nama Aktor'; ?></a></h2>
-                                        <span>ACTOR, <?php echo isset($actor['country']) ? $actor['country'] : 'Negara Aktor'; ?></span>
-                                    </div>
-                                </div>
-                                <!-- end celebrity items -->
+                                ?>
+                        <div class="ceb-item">
+                            <a href="actorsingle.php?id=<?php echo $actor['actor_id']; ?>"><img src="./images/aktor/<?php echo isset($actor['foto']) ? $actor['foto'] : 'default.jpg'; ?>" alt="<?php echo $actor['name_actor']; ?>" style="width: 280px;"></a>
+                            <div class="ceb-infor">
+                                <h2><a href=""><?php echo isset($actor['name_actor']) ? $actor['name_actor'] : 'Nama Aktor'; ?></a></h2>
+                                <span>ACTOR, <?php echo isset($actor['country']) ? $actor['country'] : 'Negara Aktor'; ?></span>
+                            </div>
+                        </div>
                     <?php
                             }
                         } else {
@@ -83,8 +65,9 @@ $total_pages = ceil($total_actors / $actors_per_page);
                         echo "Query result is null.";
                     }
                     ?>
-                </div>
-                <div class="topbar-filter">
+				</div>
+                
+                <div class="topbar-filter" style="width: 790px;" >
                     <label>Reviews per page:</label>
                     <select>
                         <option value="range">9 Reviews</option>
@@ -110,11 +93,11 @@ $total_pages = ceil($total_actors / $actors_per_page);
                 <div class="sidebar">
                     <div class="searh-form">
                         <h4 class="sb-title">Search celebrity</h4>
-                        <form class="form-style-1 celebrity-form" action="#">
+                        <form action="actor.php" method="GET" class="form-style-1 celebrity-form">
                             <div class="row">
                                 <div class="col-md-12 form-it">
                                     <label>Celebrity name</label>
-                                    <input type="text" placeholder="Enter keywords">
+                                    <input type="text" name="search" placeholder="Enter keywords" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
                                 </div>
 
                                 <div class="col-md-12 ">
