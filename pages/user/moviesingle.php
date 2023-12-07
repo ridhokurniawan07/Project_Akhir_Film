@@ -122,7 +122,7 @@ if (isset($_SESSION['user_id'])) {
                         <div class="tabs">
                             <ul class="tab-links tabs-mv">
                                 <li class="active"><a href="#overview">Overview</a></li>
-                                <li><a href="#reviews"> Reviewss</a></li>
+                                <li><a href="#reviews"> Reviews</a></li>
                                 <li><a href="#cast"> Cast</a></li>
                             </ul>
                             <div class="tab-content">
@@ -130,7 +130,7 @@ if (isset($_SESSION['user_id'])) {
                                     <div class="row">
                                         <div class="col-md-8 col-sm-12 col-xs-12">
                                             <p>
-                                            <?php echo $row['film_description']; ?>
+                                                <?php echo $row['film_description']; ?>
                                             </p>
                                             <div class="title-hd-sm">
                                                 <h4>cast</h4>
@@ -241,7 +241,7 @@ if (isset($_SESSION['user_id'])) {
                                                             <input type="radio" id="star10" name="rating" value="1" />
                                                             <label for="star10">★</label>
                                                         </div>
-                                                        <label for="review_title">Review Title:</label>
+                                                        <label for="review_title">Name :</label>
                                                         <input type="text" id="review-title" name="review_title" required />
                                                         <label for="review">Your Review:</label>
                                                         <textarea id="review" name="review" rows="5" required></textarea>
@@ -270,10 +270,41 @@ if (isset($_SESSION['user_id'])) {
                                 // Fetch reviews for the current film from the database
                                 include "./koneksi.php";
                                 $film_id = $row['film_id'];
-                                $reviews_query = "SELECT r.*, u.username AS user_name, u.gambar AS user_avatar FROM tb_review r
-                                JOIN tb_user u ON r.user_id = u.user_id
-                                WHERE r.film_id = $film_id";
+                                $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+
+                                // Define the number of reviews per page
+                                $reviews_per_page = 5;
+                                $offset = ($current_page - 1) * $reviews_per_page;
+
+                                // Query to fetch reviews for the current film with pagination
+                                $reviews_query = "SELECT r.*, u.username AS user_name, u.gambar AS user_avatar 
+                  FROM tb_review r
+                  JOIN tb_user u ON r.user_id = u.user_id
+                  WHERE r.film_id = $film_id
+                  LIMIT $offset, $reviews_per_page";
+
+                                // Execute the query
                                 $reviews_result = mysqli_query($conn, $reviews_query);
+
+                                // Check if the query was successful
+                                if (!$reviews_result) {
+                                    die("Error retrieving reviews: " . mysqli_error($conn));
+                                }
+
+                                // Store reviews data in an array
+                                $reviews_data = array();
+                                while ($review_row = mysqli_fetch_assoc($reviews_result)) {
+                                    $reviews_data[] = $review_row;
+                                }
+
+                                // Calculate total reviews for the film
+                                $total_reviews_query = "SELECT COUNT(*) AS total_reviews FROM tb_review WHERE film_id = $film_id";
+                                $total_reviews_result = mysqli_query($conn, $total_reviews_query);
+                                $total_reviews_data = mysqli_fetch_assoc($total_reviews_result);
+                                $total_reviews = $total_reviews_data['total_reviews'];
+
+                                // Calculate total pages for pagination
+                                $total_pages = ceil($total_reviews / $reviews_per_page);
                                 ?>
 
                                 <div id="reviews" class="tab review">
@@ -289,7 +320,7 @@ if (isset($_SESSION['user_id'])) {
                                             <p>Found <span><?php echo $total_reviews; ?> reviews</span> in total</p>
                                         </div>
 
-                                        <?php while ($review_row = mysqli_fetch_assoc($reviews_result)) : ?>
+                                        <?php foreach ($reviews_data as $review_row) : ?>
                                             <div class="mv-user-review-item">
                                                 <div class="user-infor">
                                                     <!-- Assuming you have a user profile picture and username in your database -->
@@ -320,8 +351,9 @@ if (isset($_SESSION['user_id'])) {
                                                     <?php echo $review_row['review']; ?>
                                                 </p>
                                             </div>
-                                        <?php endwhile; ?>
+                                        <?php endforeach; ?>
                                     </div>
+
                                     <div class="topbar-filter">
                                         <label>Reviews per page:</label>
                                         <select>
@@ -329,17 +361,16 @@ if (isset($_SESSION['user_id'])) {
                                             <option value="saab">10 Reviews</option>
                                         </select>
                                         <div class="pagination2">
-                                            <span>Page 1 of 6:</span>
-                                            <a class="active" href="#">1</a>
-                                            <a href="#">2</a>
-                                            <a href="#">3</a>
-                                            <a href="#">4</a>
-                                            <a href="#">5</a>
-                                            <a href="#">6</a>
-                                            <a href="#"><i class="ion-arrow-right-b"></i></a>
+                                            <span>Halaman <?php echo $current_page; ?> dari <?php echo $total_pages; ?>:</span>
+                                            <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                                                <a <?php if ($i == $current_page) echo 'class="active"'; ?> href="?film_id=<?php echo $movie_id; ?>&page=<?php echo $i; ?>&tab=reviews"><?php echo $i; ?></a>
+                                            <?php endfor; ?>
+                                            <a href="?film_id=<?php echo $movie_id; ?>&page=<?php echo $current_page + 1; ?>&tab=reviews"><i class="ion-arrow-right-b"></i></a>
                                         </div>
+
                                     </div>
                                 </div>
+
 
                                 <div id="cast" class="tab">
                                     <div class="row">
