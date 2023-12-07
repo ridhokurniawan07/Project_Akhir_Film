@@ -241,7 +241,7 @@ if (isset($_SESSION['user_id'])) {
                                                             <input type="radio" id="star10" name="rating" value="1" />
                                                             <label for="star10">★</label>
                                                         </div>
-                                                        <label for="review_title">Review Title:</label>
+                                                        <label for="review_title">Name :</label>
                                                         <input type="text" id="review-title" name="review_title" required />
                                                         <label for="review">Your Review:</label>
                                                         <textarea id="review" name="review" rows="5" required></textarea>
