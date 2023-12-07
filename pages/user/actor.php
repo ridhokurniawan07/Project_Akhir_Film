@@ -69,7 +69,7 @@ $total_pages = ceil($total_actors / $actors_per_page);
                     ?>
 				</div>
                 
-                <div class="topbar-filter" >
+                <div class="topbar-filter" style="width: 790px;" >
                     <label>Reviews per page:</label>
                     <select>
                         <option value="range">9 Reviews</option>
