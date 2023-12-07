@@ -1,14 +1,14 @@
 <?php
-include_once("../koneksi.php"); 
+include_once("../koneksi.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     $film_id = $_POST['film_id'];
     $film_name = $_POST['film_name'];
     $genre_id = $_POST['genre_id'];
     $film_release = $_POST['film_release'];
     $film_description = $_POST['film_description'];
-    $actors = $_POST['actors']; 
+    $actors = $_POST['actors'];
 
     if ($_FILES['film_image']['size'] > 0) {
         $film_image = $_FILES['film_image']['name'];
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     mysqli_query($conn, $update_query);
     mysqli_query($conn, "DELETE FROM tb_film_actor WHERE film_id = '$film_id'");
-  
+
     foreach ($actors as $actor_id) {
         mysqli_query($conn, "INSERT INTO tb_film_actor (film_id, actor_id) VALUES ('$film_id', '$actor_id')");
     }

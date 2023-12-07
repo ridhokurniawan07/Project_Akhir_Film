@@ -7,7 +7,7 @@
         <?php
         include "./koneksi.php";
         $genre_query = mysqli_query($conn, "SELECT * FROM `tb_genre`");
-        
+
         $tabIndex = 1;
 
         while ($genre = mysqli_fetch_assoc($genre_query)) {
@@ -52,7 +52,7 @@
                                         <img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
                                         <div class="hvr-inner">
                                             <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
-                                               Read More <i class="ion-android-arrow-dropright"></i>
+                                                Read More <i class="ion-android-arrow-dropright"></i>
                                             </a>
                                         </div>
                                         <div class="mv-item-infor">
