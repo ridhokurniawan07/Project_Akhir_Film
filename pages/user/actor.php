@@ -34,15 +34,6 @@ $total_pages = ceil($total_actors / $actors_per_page);
             <div class="col-md-9 col-sm-12 col-xs-12">
                 <div class="topbar-filter" style="width: 790px;">
                     <p>Found <span><?php echo $total_actors; ?> celebrities</span> in total</p>
-                    <label>Sort by:</label>
-                    <select>
-                        <option value="popularity">Popularity Descending</option>
-                        <option value="popularity">Popularity Ascending</option>
-                        <option value="rating">Rating Descending</option>
-                        <option value="rating">Rating Ascending</option>
-                        <option value="date">Release date Descending</option>
-                        <option value="date">Release date Ascending</option>
-                    </select>
                     <a href="actor.php" class="grid"><i class="ion-grid active"></i></a>
                 </div>
                 <div class="celebrity-items">
