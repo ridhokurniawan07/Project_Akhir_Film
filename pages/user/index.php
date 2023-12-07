@@ -27,10 +27,13 @@
 					<div class="movie-item">
 						<a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
 							<div class="mv-img">
-								<img src='images/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
+								<img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
 							</div>
 						</a>
 						<div class="title-in">
+						<div class="cate">
+	    					<span class="blue"><a href="#"><?php echo $row["film_name"]; ?></a></span>
+	    				</div>
 							<p class="rate">
 								<i class="ion-android-star"></i><span><?php echo $average_rating; ?></span> / 10
 							</p>
@@ -93,7 +96,7 @@
 						?>
 							<div class="item">
 								<div class="">
-									<img src='images/<?php echo $row["film_image"]; ?>' alt="photo by Barn Images" style="width: 50px;height: 70px;">
+									<img src='images/film/<?php echo $row["film_image"]; ?>' alt="photo by Barn Images" style="width: 50px;height: 70px;">
 								</div>
 								<div class="trailer-infor">
 									<h4 class="desc"><?php echo $row['film_name']; ?></h4>

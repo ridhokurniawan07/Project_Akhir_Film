@@ -56,15 +56,17 @@ if (isset($_GET['id'])) {
                                                     </div>
                                                     <div class="col-md-4 col-xs-12 col-sm-12">
                                                         <div class="sb-it">
-                                                            <h6>Nama:</h6>
+                                                            <h6>Name</h6>
                                                             <p><a href="#"><?php echo isset($actor['name_actor']) ? $actor['name_actor'] : ''; ?></a></p>
                                                         </div>
                                                         <div class="sb-it">
-                                                            <h6>Tanggal lahir:</h6>
-                                                            <p><?php echo isset($actor['birth_date']) ? $actor['birth_date'] : ''; ?></p>
+                                                            <h6>Birthday:</h6>
+                                                            <p><?php
+                                                                echo isset($actor['birth_date']) ? date('F j, Y', strtotime($actor['birth_date'])) : '';
+                                                                ?></p>
                                                         </div>
                                                         <div class="sb-it">
-                                                            <h6>Negara:</h6>
+                                                            <h6>Country:</h6>
                                                             <p><?php echo isset($actor['country']) ? $actor['country'] : ''; ?></p>
                                                         </div>
                                                     </div>
