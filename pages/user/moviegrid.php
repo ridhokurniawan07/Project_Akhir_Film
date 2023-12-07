@@ -86,7 +86,7 @@ $total_pages = ceil($total_movies / $movies_per_page);
                         $average_rating = number_format($average_rating_row['avg_rating'], 1);
                     ?>
                         <div class="movie-item-style-2 movie-item-style-1">
-                            <img src="images/<?php echo $row['film_image']; ?>" alt="" />
+                            <img src="images/film/<?php echo $row['film_image']; ?>" alt="" />
                             <div class="hvr-inner">
                                 <a href="moviesingle.php?film_id=<?php echo $row['film_id']; ?>">
                                     Read more <i class="ion-android-arrow-dropright"></i>

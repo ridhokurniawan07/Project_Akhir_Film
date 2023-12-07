@@ -42,38 +42,28 @@ $total_pages = ceil($total_actors / $actors_per_page);
     <div class="container">
         <div class="row ipad-width2">
             <div class="col-md-9 col-sm-12 col-xs-12">
-                <div class="topbar-filter">
+                <div class="topbar-filter" style="width: 790px;">
                     <p>Found <span><?php echo $total_actors; ?> celebrities</span> in total</p>
-                    <label>Sort by:</label>
-                    <select>
-                        <option value="popularity">Popularity Descending</option>
-                        <option value="popularity">Popularity Ascending</option>
-                        <option value="rating">Rating Descending</option>
-                        <option value="rating">Rating Ascending</option>
-                        <option value="date">Release date Descending</option>
-                        <option value="date">Release date Ascending</option>
-                    </select>
-                    <a href="actorlist.php" class="list"><i class="ion-ios-list-outline "></i></a>
+                    
                     <a href="actor.php" class="grid"><i class="ion-grid active"></i></a>
                 </div>
                 <div class="celebrity-items">
-
                     <?php
                     if ($actor_query !== null) {
                         if (mysqli_num_rows($actor_query) > 0) {
                             while ($actor = mysqli_fetch_array($actor_query)) {
                     ?>
+                    ?>
                                 <!-- celebrity items -->
-                                <div class="ceb-item">
-                                    <a href="actorsingle.php?id=<?php echo $actor['actor_id']; ?>">
-                                        <img src="./images/aktor/<?php echo isset($actor['foto']) ? $actor['foto'] : 'default.jpg'; ?>" alt="<?php echo $actor['name_actor']; ?>">
-                                    </a>
-                                    <div class="ceb-infor">
-                                        <h2><a href=""><?php echo isset($actor['name_actor']) ? $actor['name_actor'] : 'Nama Aktor'; ?></a></h2>
-                                        <span>ACTOR, <?php echo isset($actor['country']) ? $actor['country'] : 'Negara Aktor'; ?></span>
-                                    </div>
-                                </div>
-                                <!-- end celebrity items -->
+                                ?>
+                                <!-- celebrity items -->
+                        <div class="ceb-item">
+                            <a href="actorsingle.php?id=<?php echo $actor['actor_id']; ?>"><img src="./images/aktor/<?php echo isset($actor['foto']) ? $actor['foto'] : 'default.jpg'; ?>" alt="<?php echo $actor['name_actor']; ?>" style="width: 280px;"></a>
+                            <div class="ceb-infor">
+                                <h2><a href=""><?php echo isset($actor['name_actor']) ? $actor['name_actor'] : 'Nama Aktor'; ?></a></h2>
+                                <span>ACTOR, <?php echo isset($actor['country']) ? $actor['country'] : 'Negara Aktor'; ?></span>
+                            </div>
+                        </div>
                     <?php
                             }
                         } else {
@@ -83,8 +73,9 @@ $total_pages = ceil($total_actors / $actors_per_page);
                         echo "Query result is null.";
                     }
                     ?>
-                </div>
-                <div class="topbar-filter">
+				</div>
+                
+                <div class="topbar-filter" style="width: 790px;">
                     <label>Reviews per page:</label>
                     <select>
                         <option value="range">9 Reviews</option>
