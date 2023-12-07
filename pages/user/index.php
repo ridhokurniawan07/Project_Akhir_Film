@@ -30,9 +30,6 @@
 							<img src='images/film/<?php echo $row["film_image"]; ?>' alt='Film Image' width="185" height="284">
 						</div> </a>
 						<div class="title-in">
-							<div class="cate">
-								<span class="blue"><?php echo $row['film_name']; ?></span>
-							</div>
 							<p class="rate">
                                     <i class="ion-android-star"></i><span><?php echo $average_rating; ?></span> / 10
                             </p>
