@@ -4,10 +4,17 @@ $actors_per_page = 9;
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $actors_per_page;
 
-$actor_query = mysqli_query($conn, "SELECT * FROM tb_actor LIMIT $actors_per_page OFFSET $offset");
-$total_actors_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_actor");
+// Mendapatkan nilai pencarian dan membersihkannya
+$search_query = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+
+// Query untuk mengambil data aktor sesuai dengan pencarian
+$actor_query = mysqli_query($conn, "SELECT * FROM tb_actor WHERE name_actor LIKE '%$search_query%' LIMIT $actors_per_page OFFSET $offset");
+
+// Query untuk menghitung total aktor sesuai dengan pencarian
+$total_actors_query = mysqli_query($conn, "SELECT COUNT(*) FROM tb_actor WHERE name_actor LIKE '%$search_query%'");
 $total_actors = mysqli_fetch_row($total_actors_query)[0];
 
+// Menghitung total halaman
 $total_pages = ceil($total_actors / $actors_per_page);
 ?>
 
@@ -86,11 +93,11 @@ $total_pages = ceil($total_actors / $actors_per_page);
                 <div class="sidebar">
                     <div class="searh-form">
                         <h4 class="sb-title">Search celebrity</h4>
-                        <form class="form-style-1 celebrity-form" action="#">
+                        <form action="actor.php" method="GET" class="form-style-1 celebrity-form">
                             <div class="row">
                                 <div class="col-md-12 form-it">
                                     <label>Celebrity name</label>
-                                    <input type="text" placeholder="Enter keywords">
+                                    <input type="text" name="search" placeholder="Enter keywords" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
                                 </div>
 
                                 <div class="col-md-12 ">
