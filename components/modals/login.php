@@ -10,10 +10,16 @@ if (isset($_POST['request_login'])) {
     $requestLogin = $authModel->requestLogin($username, $password);
 
     if ($requestLogin) {
+        $role = $_SESSION['role'];
         echo '
-            <script language="javascript">
-                alert("Login Success!!!")
-            </script>';
+        <script language="javascript">
+            alert("Login Success!!!")
+        </script>';
+
+        if ($role == 'admin') {
+            header('Location: adminhome.php');
+        } 
+        
     } else {
         echo '
             <script language="javascript">

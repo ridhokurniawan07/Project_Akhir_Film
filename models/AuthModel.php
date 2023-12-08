@@ -7,11 +7,21 @@ class AuthModel
 	{
 		session_start();
 
-		if ($_SESSION['is_login']) {
+		if ($_SESSION['is_login'] && $_SESSION['role'] == 'user') {
 			return true;
 		} else {
 			return false;
 		}
+	}
+
+	public function isAdminAlreadyLogin()
+	{
+		session_start();
+		
+		if (!$_SESSION['is_login'] || $_SESSION['role'] != 'admin') {
+			var_dump('masuk');
+            header('Location: index.php');
+        } 
 	}
 
 	public function isUsernameAlreadyExist($username)
@@ -36,9 +46,8 @@ class AuthModel
 			$_SESSION['user_id'] 	= $data['user_id'];
 			$_SESSION['name'] 		= $data['name'];
 			$_SESSION['username']   = $data['username'];
+			$_SESSION['role']		= $data['role'];
 			$_SESSION['is_login'] 	= true;
-			var_dump($_SESSION['is_login']);
-			// exit;
 			return TRUE;
 		} else {
 			return FALSE;
