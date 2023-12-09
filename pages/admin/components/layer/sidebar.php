@@ -51,6 +51,14 @@
                     </a>
                 </li>
 
+
+                <li class="sidebar-item  <?php echo isMenuActive('datareview.php', $current_page); ?>">
+                    <a href="./datareview.php" class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Data review</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item <?php echo isMenuActive('datafilm.php', $current_page); ?>">
                     <a href="./datafilm.php" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
