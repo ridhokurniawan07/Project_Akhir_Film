@@ -24,7 +24,7 @@
         </div>
         <?php
         include "./koneksi.php";
-        $result = mysqli_query($conn, "select * from tb_review");
+        $result = mysqli_query($conn, "SELECT tb_review.*, tb_film.film_name AS film_title FROM tb_review JOIN tb_film ON tb_review.film_id = tb_film.film_id");
         ?>
         <section class="section">
             <div class="card">
@@ -33,7 +33,7 @@
                         <thead>
                             <tr>
                                 <th style="width: 5%;">No</th>
-                                <th>Film ID</th>
+                                <th>Judul</th>
                                 <th>Review Title</th>
                                 <th>Review</th>
                                 <th>Rating</th>
@@ -47,17 +47,17 @@
                             ?>
                                 <tr>
                                     <td><?php echo $no++ ?></td>
-                                    <td><?php echo $data['film_id']; ?></td>
+                                    <td><?php echo $data['film_title']; ?></td>
                                     <td><?php echo $data['review_title']; ?></td>
                                     <td><?php echo $data['review']; ?></td>
                                     <td><?php echo $data['rating']; ?></td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <a href="./models/proseshapusreview.php ?id=<?php echo $data['review_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus review ini?');">Hapus</a>
+                                            <a href="./models/proseshapusreview.php?id=<?php echo $data['review_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus review ini?');">Hapus</a>
                                         </div>
                                     </td>
                                 </tr>
-                            <?php  } ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
