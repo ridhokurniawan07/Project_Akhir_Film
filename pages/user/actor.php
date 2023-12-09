@@ -68,10 +68,10 @@ $total_pages = ceil($total_actors / $actors_per_page);
 				</div>
                 
                 <div class="topbar-filter" style="width: 790px;" >
-                    <label>Reviews per page:</label>
+                    <label>Actors per page:</label>
                     <select>
-                        <option value="range">9 Reviews</option>
-                        <option value="saab">10 Reviews</option>
+                        <option value="range">9 Actors</option>
+                        <option value="saab">15 Actors</option>
                     </select>
 
                     <div class="pagination2">
