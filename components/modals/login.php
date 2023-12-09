@@ -10,21 +10,15 @@ if (isset($_POST['request_login'])) {
     $requestLogin = $authModel->requestLogin($username, $password);
 
     if ($requestLogin) {
-        // Check the user's role after successful login
         $role = $_SESSION['role'];
+        echo '
+        <script language="javascript">
+            alert("Login Success!!!")
+        </script>';
 
-        switch ($role) {
-            case 'admin':
-                header('Location: adminhome.php');
-                break;
-
-                // Add more cases for other roles if needed
-
-            default:
-                header('Location: index.php');
-                break;
+        if ($role == 'admin') {
+            header('Location: adminhome.php');
         }
-        exit();
     } else {
         echo '
             <script language="javascript">
