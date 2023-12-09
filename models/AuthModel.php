@@ -17,11 +17,11 @@ class AuthModel
 	public function isAdminAlreadyLogin()
 	{
 		session_start();
-		
+
 		if (!$_SESSION['is_login'] || $_SESSION['role'] != 'admin') {
 			var_dump('masuk');
-            header('Location: index.php');
-        } 
+			header('Location: index.php');
+		}
 	}
 
 	public function isUsernameAlreadyExist($username)
@@ -50,7 +50,7 @@ class AuthModel
 			$_SESSION['is_login'] 	= true;
 			return TRUE;
 		} else {
-			return FALSE;
+			return false;
 		}
 	}
 

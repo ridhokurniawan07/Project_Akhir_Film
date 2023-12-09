@@ -4,8 +4,8 @@ include_once './models/AuthModel.php';
 $authModel = new AuthModel();
 
 if (isset($_POST['request_login'])) {
-    $username        = $_POST['username'];
-    $password        = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $requestLogin = $authModel->requestLogin($username, $password);
 
@@ -18,8 +18,7 @@ if (isset($_POST['request_login'])) {
 
         if ($role == 'admin') {
             header('Location: adminhome.php');
-        } 
-        
+        }
     } else {
         echo '
             <script language="javascript">
@@ -28,6 +27,7 @@ if (isset($_POST['request_login'])) {
     }
 }
 ?>
+
 <div class="login-wrapper" id="login-content">
     <div class="login-content">
         <a href="#" class="close">x</a>

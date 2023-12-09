@@ -130,7 +130,7 @@ $total_pages = ceil($total_movies / $movies_per_page);
                             <div class="row">
                                 <div class="col-md-12 form-it">
                                     <label>Movie name</label>
-                                    <input type="text" name="search_movie" placeholder="Enter keywords" />
+                                    <input type="text" name="search_movie" placeholder="Enter keywords" value="<?php echo isset($_GET['search_movie']) ? htmlspecialchars($_GET['search_movie']) : ''; ?>" />
                                 </div>
                                 <div class="col-md-12 form-it">
                                     <label>Genre</label>
@@ -149,7 +149,11 @@ $total_pages = ceil($total_movies / $movies_per_page);
                                             while ($genre_row = mysqli_fetch_assoc($genres_result)) {
                                                 $genre_id = $genre_row['genre_id'];
                                                 $genre_name = $genre_row['genre_name'];
-                                                echo "<option value='$genre_id'>$genre_name</option>";
+
+                                                // Check if the genre is selected
+                                                $selected = (isset($_GET['genres']) && in_array($genre_id, $_GET['genres'])) ? 'selected' : '';
+
+                                                echo "<option value='$genre_id' $selected>$genre_name</option>";
                                             }
 
                                             // Close the database connection
@@ -158,6 +162,7 @@ $total_pages = ceil($total_movies / $movies_per_page);
                                         </select>
                                     </div>
                                 </div>
+
                                 <div class="col-md-12 form-it">
                                     <label>Rating Range</label>
                                     <select name="rating_range">
@@ -165,11 +170,15 @@ $total_pages = ceil($total_movies / $movies_per_page);
                                         <?php
                                         // Loop through ratings from 1 to 10 to generate dropdown options
                                         for ($rating_value = 1; $rating_value <= 10; $rating_value++) {
-                                            echo "<option value='$rating_value'>$rating_value</option>";
+                                            // Check if the rating value is selected
+                                            $selected = (isset($_GET['rating_range']) && $_GET['rating_range'] == $rating_value) ? 'selected' : '';
+
+                                            echo "<option value='$rating_value' $selected>$rating_value</option>";
                                         }
                                         ?>
                                     </select>
                                 </div>
+
 
                                 <div class="col-md-12">
                                     <input class="submit" type="submit" value="Submit" />
