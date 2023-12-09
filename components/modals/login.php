@@ -4,16 +4,27 @@ include_once './models/AuthModel.php';
 $authModel = new AuthModel();
 
 if (isset($_POST['request_login'])) {
-    $username        = $_POST['username'];
-    $password        = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     $requestLogin = $authModel->requestLogin($username, $password);
 
     if ($requestLogin) {
-        echo '
-            <script language="javascript">
-                alert("Login Success!!!")
-            </script>';
+        // Check the user's role after successful login
+        $role = $_SESSION['role'];
+
+        switch ($role) {
+            case 'admin':
+                header('Location: adminhome.php');
+                break;
+
+                // Add more cases for other roles if needed
+
+            default:
+                header('Location: index.php');
+                break;
+        }
+        exit();
     } else {
         echo '
             <script language="javascript">
@@ -22,6 +33,7 @@ if (isset($_POST['request_login'])) {
     }
 }
 ?>
+
 <div class="login-wrapper" id="login-content">
     <div class="login-content">
         <a href="#" class="close">x</a>

@@ -32,16 +32,21 @@ class AuthModel
 		$dataSql = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE username='$username' AND password='$password'");
 		$data = $dataSql->fetch_array();
 
-		if ($username == $data['username'] and $password == $data['password']) {
-			$_SESSION['user_id'] 	= $data['user_id'];
-			$_SESSION['name'] 		= $data['name'];
-			$_SESSION['username']   = $data['username'];
-			$_SESSION['is_login'] 	= true;
-			var_dump($_SESSION['is_login']);
-			// exit;
-			return TRUE;
+		if ($data) {
+			$_SESSION['user_id'] = $data['user_id'];
+			$_SESSION['name'] = $data['name'];
+			$_SESSION['username'] = $data['username'];
+			$_SESSION['is_login'] = true;
+
+			// Redirect based on user role
+			if ($data['role'] == 'admin') {
+				header('Location: adminhome.php');
+			} else {
+				header('Location: index.php');
+			}
+			exit();
 		} else {
-			return FALSE;
+			return false;
 		}
 	}
 
