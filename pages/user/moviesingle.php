@@ -59,9 +59,9 @@ if ($result->num_rows > 0) {
     <div class="container">
         <div class="row ipad-width2">
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="movie-img sticky-sb">
+                <div class="movie-img sticky-sb" style="width: 122%;">
                     <img src="images/film/<?php echo $row['film_image']; ?>" alt="" />
-                    <div class="movie-btn">
+                    <div class="movie-btn" style="width: 80%;">
                         <div class="btn-transform transform-vertical red">
                             <div>
                                 <a href="#" class="item item-1 redbtn">

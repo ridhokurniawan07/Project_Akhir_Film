@@ -6,8 +6,9 @@ $authModel = new AuthModel;
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == "logout") {
+        $role = 'user';
         $current_page = basename($_SERVER['PHP_SELF']);
-        $authModel->requestLogout();
+        $authModel->requestLogout($role);
         header('location:./' . $current_page);
     }
 }
@@ -50,7 +51,7 @@ if (isset($_GET['action'])) {
 
         <ul class="nav navbar-nav flex-child-menu menu-right">
             <?php 
-            if (isset($_SESSION['is_login'])) {
+            if (isset($_SESSION['is_user_login'])) {
                 echo '
                 <li class="dropdown first">
                     <li class="dropwonfirst"><a href="userprofile.php"><i class="fas fa-user" style="font-size: 20px; margin-top: -10px; margin-right: 10px;"></i></a></li></a>
