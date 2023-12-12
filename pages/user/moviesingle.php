@@ -9,11 +9,15 @@ if (isset($_SESSION['user_id'])) {
 }
 // Sertakan file koneksi database
 include "./koneksi.php";
+include_once './models/MovieModel.php';
+
+$movieModel = new MovieModel();
 
 // Ambil detail film menggunakan $_GET['film_id']
 $movie_id = $_GET['film_id'];
 $sql = "SELECT * FROM tb_film WHERE film_id = $movie_id";
 $result = $conn->query($sql);
+
 
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
@@ -22,6 +26,10 @@ if ($result->num_rows > 0) {
     $film_description = $row['film_description'];
     $film_image = $row['film_image'];
 
+    //Update seen counter 
+    $totalSeen = $row['visited_counter'] + 1;
+    $movieModel->requestUpdateMovieSeen($movie_id, $totalSeen);
+    
     // Ambil ulasan untuk film saat ini dari database
     $film_id = $row['film_id'];
     $reviews_query = "SELECT AVG(r.rating) AS average_rating, COUNT(*) AS total_reviews
@@ -101,6 +109,11 @@ if ($result->num_rows > 0) {
                     <h1 class="bd-hd">
                         <?php echo $row['film_name']; ?> <span><?php echo date_format(date_create($row["film_release"]), 'Y'); ?></span>
                     </h1>
+                    <div class="rate">
+                                <p>
+                                    <span class="rv"><?= $totalSeen ; ?> Total Seen</span>
+                                </p>
+                            </div>
                     <div class="movie-rate">
                         <div class="rate">
                             <i class="ion-android-star"></i>
