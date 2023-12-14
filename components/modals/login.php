@@ -35,6 +35,7 @@ if (isset($_POST['request_login'])) {
         $requestLogin = $authModel->requestLogin($username, $password);
 
         if ($requestLogin) {
+            session_start();
             $role = $_SESSION['role'];
             echo '<script language="javascript">alert("Login Success!!!")</script>';
 
@@ -79,8 +80,8 @@ ob_end_flush();
                     <a href="#">Forget password ?</a>
                 </div>
             </div>
+            <form action="" method="POST">
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-            <form action="validate.php" method="POST">
             <div class="g-recaptcha" data-sitekey="6LfLjzApAAAAAMiTYui3QLvHzPf43IbXCVA_RmWO"></div>
             <br/>
             <div class="row">

@@ -51,7 +51,6 @@ class MovieModel
         $average_rating = number_format($average_rating_row['avg_rating'], 1);
         return $average_rating;
     }
-
     public function requestUpdateMovieSeen($film_id, $seenCounter) {
         $dBConnect = new DBConnect();
         $query = mysqli_query($dBConnect->connect, "UPDATE tb_film  

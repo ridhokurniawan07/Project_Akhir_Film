@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
     //Update seen counter 
     $totalSeen = $row['visited_counter'] + 1;
     $movieModel->requestUpdateMovieSeen($movie_id, $totalSeen);
-    
+
     // Ambil ulasan untuk film saat ini dari database
     $film_id = $row['film_id'];
     $reviews_query = "SELECT AVG(r.rating) AS average_rating, COUNT(*) AS total_reviews
