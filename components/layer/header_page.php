@@ -1,4 +1,5 @@
 <?php 
+
     if (isset($_POST['search_text'])) {
         $keyword = $_POST['search_text'];
         header('location:search.php?keyword='.$keyword);
