@@ -1,9 +1,5 @@
 <?php 
-include_once './models/AuthModel.php';
 include_once './models/GenreModel.php';
-
-$authModel = new AuthModel();
-$authModel->isAdminAlreadyLogin();
 
 $genreModel = new GenretModel;
 

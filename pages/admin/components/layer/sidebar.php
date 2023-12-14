@@ -1,3 +1,16 @@
+<?php 
+    if (isset($_GET['action'])) {
+        $action = $_GET['action'];
+        if ($action == "logout") {
+            $role = 'admin';
+            $current_page = basename($_SERVER['PHP_SELF']);
+            $authModel->requestLogout($role);
+            header('location:'.$current_page);
+        }
+    }
+    ?>
+?>
+
 <div id="sidebar" class="active">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
@@ -74,7 +87,7 @@
                 </li>
 
                 <div class="sidebar-item  has-sub"></div>
-                <a href="./logout.php" class='sidebar-link'>
+                <a href="<?= $current_page = basename($_SERVER['PHP_SELF']).'?action=logout'; ?>" class='sidebar-link'>
                     <i class="bi bi-hexagon-fill"></i>
                     <span>Logout</span>
                 </a>

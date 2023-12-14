@@ -1,9 +1,4 @@
 <?php
-include_once './models/AuthModel.php';
-
-$authModel = new AuthModel();
-$authModel->isAdminAlreadyLogin();
-
 $pageName = "Admin Home";
 include_once 'pages/admin/components/layer/header.php';
 include_once 'pages/admin/components/layer/sidebar.php';

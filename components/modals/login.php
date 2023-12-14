@@ -74,6 +74,7 @@ ob_end_flush();
                     <input type="password" name="password" id="password" placeholder="Input your password..." required="required" />
                 </label>
             </div>
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
             <div class="row">
                 <div class="remember">
                     <a href="#">Forget password ?</a>
@@ -96,3 +97,6 @@ ob_end_flush();
         </div>
     </div>
 </div>
+
+<!-- Include reCAPTCHA script -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
