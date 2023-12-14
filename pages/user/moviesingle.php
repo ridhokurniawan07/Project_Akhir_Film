@@ -109,10 +109,10 @@ if ($result->num_rows > 0) {
                         <?php echo $row['film_name']; ?> <span><?php echo date_format(date_create($row["film_release"]), 'Y'); ?></span>
                     </h1>
                     <div class="rate">
-                                <p>
-                                    <span class="rv"><?= $totalSeen ; ?> Total Seen</span>
-                                </p>
-                            </div>
+                        <p>
+                            <span class="rv"><?= $totalSeen; ?> Total Seen</span>
+                        </p>
+                    </div>
                     <div class="movie-rate">
                         <div class="rate">
                             <i class="ion-android-star"></i>
@@ -462,11 +462,11 @@ if ($result->num_rows > 0) {
                     $average_rating = number_format($average_rating_row['avg_rating'], 1);
                 ?>
                     <div class="movie-item">
-                            <div class="mv-img">
-                                <img src='images/film/<?php echo $related_row["film_image"]; ?>' alt='Film Image' width="185" height="284">
-                            </div>
-                            <a href="moviesingle.php?film_id=<?php echo $related_row['film_id']; ?>" class="read-more-btn">
-                    Read More <i class="ion-android-arrow-dropright"></i>
+                        <div class="mv-img">
+                            <img src='images/film/<?php echo $related_row["film_image"]; ?>' alt='Film Image' width="185" height="284">
+                        </div>
+                        <a href="moviesingle.php?film_id=<?php echo $related_row['film_id']; ?>" class="read-more-btn">
+                            Read More <i class="ion-android-arrow-dropright"></i>
                         </a>
                         <div class="title-in">
                             <div class="cate">

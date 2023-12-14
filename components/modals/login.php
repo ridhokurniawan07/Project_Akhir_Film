@@ -81,19 +81,19 @@ ob_end_flush();
                 </div>
             </div>
             <form action="" method="POST">
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-            <div class="g-recaptcha" data-sitekey="6LfLjzApAAAAAMiTYui3QLvHzPf43IbXCVA_RmWO"></div>
-            <br/>
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                <div class="g-recaptcha" data-sitekey="6LfLjzApAAAAAMiTYui3QLvHzPf43IbXCVA_RmWO"></div>
+                <br />
+                <div class="row">
+                    <button type="submit" name="request_login">Login</button>
+                </div>
+            </form>
             <div class="row">
-                <button type="submit" name="request_login">Login</button>
+                <p>Or via social</p>
+                <div class="social-btn-2">
+                    <a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
+                    <a class="tw" href="#"><i class="ion-social-twitter"></i>twitter</a>
+                </div>
             </div>
-        </form>
-        <div class="row">
-            <p>Or via social</p>
-            <div class="social-btn-2">
-                <a class="fb" href="#"><i class="ion-social-facebook"></i>Facebook</a>
-                <a class="tw" href="#"><i class="ion-social-twitter"></i>twitter</a>
-            </div>
-        </div>
     </div>
 </div>

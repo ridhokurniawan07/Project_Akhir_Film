@@ -1,4 +1,4 @@
-<?php 
+<?php
 ob_start();
 include_once './models/AuthModel.php';
 
@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
         </ul>
 
         <ul class="nav navbar-nav flex-child-menu menu-right">
-            <?php 
+            <?php
             if (isset($_SESSION['is_login'])) {
                 echo '
                 <li class="dropdown first">
