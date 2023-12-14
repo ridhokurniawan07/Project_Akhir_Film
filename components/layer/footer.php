@@ -77,6 +77,50 @@ if ($isWriteReview) {
 			document.getElementById("update-image-button").click();
 		}
 	}
+
+	function presentLogin() {
+		var loginView = document.getElementById("login");
+		var forgotView = document.getElementById("forgot-password");
+
+		var loginUsernameInput 		= document.getElementById("login-username-input");
+		var loginPasswordInput		= document.getElementById("login-password-input");
+
+		var forgotUsernameInput 	= document.getElementById("forgot-username-input");
+		var forgotNewPasswordInput 	= document.getElementById("forgot-new-password-input");
+		var forgotConfirmPasswordInput 	= document.getElementById("forgot-confirm-password-input");
+
+		forgotView.classList.add("hidden");
+		loginView.classList.remove("hidden");
+
+		jQuery(loginUsernameInput).attr('required', '');
+		jQuery(loginPasswordInput).attr('required', '');
+
+		jQuery(forgotUsernameInput).removeAttr('required');
+		jQuery(forgotNewPasswordInput).removeAttr('required');
+		jQuery(forgotConfirmPasswordInput).removeAttr('required');
+	}
+
+	function presentForgotPassword() {
+		var loginView = document.getElementById("login");
+		var forgotView = document.getElementById("forgot-password");
+
+		var loginUsernameInput 		= document.getElementById("login-username-input");
+		var loginPasswordInput		= document.getElementById("login-password-input");
+
+		var forgotUsernameInput 	= document.getElementById("forgot-username-input");
+		var forgotNewPasswordInput 	= document.getElementById("forgot-new-password-input");
+		var forgotConfirmPasswordInput 	= document.getElementById("forgot-confirm-password-input");
+
+		loginView.classList.add("hidden");
+		forgotView.classList.remove("hidden");
+
+		jQuery(forgotUsernameInput).attr('required', '');
+		jQuery(forgotNewPasswordInput).attr('required', '');
+		jQuery(forgotConfirmPasswordInput).attr('required', '');
+
+		jQuery(loginUsernameInput).removeAttr('required');
+		jQuery(loginPasswordInput).removeAttr('required');
+	}
 </script>
 
 <script src="js/jquery.js"></script>
