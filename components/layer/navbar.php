@@ -1,8 +1,8 @@
 <?php 
+ob_start();
 include_once './models/AuthModel.php';
 
 $authModel = new AuthModel;
-
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
     if ($action == "logout") {
@@ -66,5 +66,5 @@ if (isset($_GET['action'])) {
             ?>
         </ul>
     </div>
-    <!-- /.navbar-collapse -->
+    <!-- /.navbar-collapse -->
 </nav>
