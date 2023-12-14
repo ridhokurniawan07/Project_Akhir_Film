@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if ($pageName != "User Profile") {
   session_start();
 }

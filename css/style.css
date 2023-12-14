@@ -1186,6 +1186,15 @@ input[type="color"],
   background-color: #fff;
   background-image: none;
   border: 1px solid #aaa;
+<<<<<<< HEAD
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s 0.3s ease-out;
+  -moz-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s 0.3s ease-out;
+  -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s 0.3s ease-out;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s 0.3s ease-out;
+=======
   -webkit-transition: border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s;
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
@@ -1198,6 +1207,7 @@ input[type="color"],
     box-shadow ease-in-out 0.15s 0.3s ease-out;
   transition: border-color ease-in-out 0.15s,
     box-shadow ease-in-out 0.15s 0.3s ease-out;
+>>>>>>> 84b235336f2ed298e15204ba6cf9d47304384532
 }
 select:focus,
 textarea:focus,
@@ -3778,7 +3788,7 @@ body {
   font-size: 15rem;
   font-size: 15px;
   font-size: 1.5rem;
-  color: #333;
+  color: #e80909;
 }
 body,
 button,
@@ -5198,8 +5208,12 @@ ul {
   text-transform: none;
   border: none;
   height: 40px;
+<<<<<<< HEAD
+  background: url("../images/uploads/search-bgsb.png") no-repeat right 20px center;
+=======
   background: url("../images/uploads/search-bgsb.png") no-repeat right 20px
     center;
+>>>>>>> 84b235336f2ed298e15204ba6cf9d47304384532
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -8417,3 +8431,29 @@ footer.full-width-ft .ft-copyright {
   font-family: "Dosis", sans-serif;
   font-weight: 700;
 }
+
+/* Gaya untuk tombol "Read More" */
+.movie-item {
+  margin-bottom: 20px; /* Add some margin at the bottom of each movie item */
+}
+
+.mv-img {
+  margin-bottom: 15px; /* Add margin at the bottom of the movie image */
+}
+.read-more-btn {
+  display: inline-block;
+  padding: 8px 15px; /* Mengurangi ukuran padding */
+  font-size: 14px; /* Mengurangi ukuran font */
+  background-color: #dd003f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-right: 22px;
+}
+
+.read-more-btn:hover {
+  background-color: #c0392b;
+}
+
+

@@ -1,36 +1,51 @@
 <?php
-// Start the session
 
-// Check if the user is logged in
 if (isset($_SESSION['user_id'])) {
-    // If logged in, obtain the user ID
+    // Assign the user ID to $userId
     $userId = $_SESSION['user_id'];
-
-    // Now you can use $userId as needed, for example, storing it in the session for later use
-    $_SESSION['userId'] = $userId;
-
-    // Include your database connection file
-    include "./koneksi.php";
-
-    // Retrieve movie details using $_GET['film_id']
-    $movie_id = $_GET['film_id'];
-    $sql = "SELECT * FROM tb_film WHERE film_id = $movie_id";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $film_name = $row['film_name'];
-        $film_release = $row['film_release'];
-        $film_description = $row['film_description'];
-        $film_image = $row['film_image'];
-    }
-
-    // Close the database connection
-    $conn->close();
 } else {
-    // Redirect to the login page if the user is not logged in
-    header("Location: login.php");
-    exit();
+    // Handle the case when the user is not logged in
+    // You might redirect them to the login page or handle it in another way
+}
+// Sertakan file koneksi database
+include "./koneksi.php";
+include_once './models/MovieModel.php';
+
+$movieModel = new MovieModel();
+
+// Ambil detail film menggunakan $_GET['film_id']
+$movie_id = $_GET['film_id'];
+$sql = "SELECT * FROM tb_film WHERE film_id = $movie_id";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $film_name = $row['film_name'];
+    $film_release = $row['film_release'];
+    $film_description = $row['film_description'];
+    $film_image = $row['film_image'];
+
+    //Update seen counter 
+    $totalSeen = $row['visited_counter'] + 1;
+    $movieModel->requestUpdateMovieSeen($movie_id, $totalSeen);
+
+    // Ambil ulasan untuk film saat ini dari database
+    $film_id = $row['film_id'];
+    $reviews_query = "SELECT AVG(r.rating) AS average_rating, COUNT(*) AS total_reviews
+          FROM tb_review r
+          WHERE r.film_id = $film_id";
+    $reviews_result = mysqli_query($conn, $reviews_query);
+
+    // Periksa apakah ada ulasan untuk film tersebut
+    if ($reviews_result) {
+        $reviews_data = mysqli_fetch_assoc($reviews_result);
+        $average_rating = round($reviews_data['average_rating'], 1);
+        $total_reviews = $reviews_data['total_reviews'];
+    } else {
+        // Nilai default jika tidak ada ulasan
+        $average_rating = 0;
+        $total_reviews = 0;
+    }
 }
 ?>
 
@@ -93,6 +108,11 @@ if (isset($_SESSION['user_id'])) {
                     <h1 class="bd-hd">
                         <?php echo $row['film_name']; ?> <span><?php echo date_format(date_create($row["film_release"]), 'Y'); ?></span>
                     </h1>
+                    <div class="rate">
+                        <p>
+                            <span class="rv"><?= $totalSeen; ?> Total Seen</span>
+                        </p>
+                    </div>
                     <div class="movie-rate">
                         <div class="rate">
                             <i class="ion-android-star"></i>
@@ -209,6 +229,7 @@ if (isset($_SESSION['user_id'])) {
                                         </div>
                                     </div>
                                 </div>
+
                                 <div id="write-review-modal" class="modal-overlay">
                                     <div class="modal-content">
                                         <div class="rv-hd">
@@ -314,7 +335,7 @@ if (isset($_SESSION['user_id'])) {
                                                 <h3>Related Movies To</h3>
                                                 <h2><?php echo $row['film_name']; ?></h2>
                                             </div>
-                                            <a href="#" id="write-review-btn" class="redbtn" style="margin-right:20px;">Write Review</a>
+                                            <a href="#" id="write-review-btn" class="redbtn" style="margin-right:20px;" onclick="checkLogin()">Write Review</a>
                                         </div>
                                         <div class="topbar-filter">
                                             <p>Found <span><?php echo $total_reviews; ?> reviews</span> in total</p>
@@ -403,7 +424,6 @@ if (isset($_SESSION['user_id'])) {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -411,4 +431,54 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 </div>
+
+<div class="slider movie-items">
+    <div class="container">
+        <h2 style="color:white;">Rekomendasi Untuk Kamu</h2>
+        <div class="row">
+            <?php
+            include "./koneksi.php";
+            $query_all = mysqli_query($conn, "SELECT * FROM `tb_film`;");
+            ?>
+
+
+            <div class="slick-multiItemSlider">
+                <?php
+                // Fetch the genre ID of the current movie
+                $current_movie_genre_id = $row['genre_id'];
+
+                // Fetch movies with the same genre, excluding the current movie
+                $related_movies_query = "SELECT * FROM `tb_film` WHERE genre_id = $current_movie_genre_id AND film_id != $movie_id";
+                $related_movies_result = mysqli_query($conn, $related_movies_query);
+
+                // Loop through related movies and display them in the slider
+                while ($related_row = mysqli_fetch_array($related_movies_result)) {
+                    $related_film_id = $related_row['film_id'];
+                    $average_rating_query = "SELECT AVG(rating) as avg_rating FROM tb_review WHERE film_id = $related_film_id";
+                    $average_rating_result = mysqli_query($conn, $average_rating_query);
+                    $average_rating_row = mysqli_fetch_assoc($average_rating_result);
+
+                    // Format the average rating to display only one decimal place
+                    $average_rating = number_format($average_rating_row['avg_rating'], 1);
+                ?>
+                    <div class="movie-item">
+                        <div class="mv-img">
+                            <img src='images/film/<?php echo $related_row["film_image"]; ?>' alt='Film Image' width="185" height="284">
+                        </div>
+                        <a href="moviesingle.php?film_id=<?php echo $related_row['film_id']; ?>" class="read-more-btn">
+                            Read More <i class="ion-android-arrow-dropright"></i>
+                        </a>
+                        <div class="title-in">
+                            <div class="cate">
+                                <span class="blue"><a href="#"><?php echo $related_row["film_name"]; ?></a></span>
+                            </div>
+                            <p class="rate">
+                                <i class="ion-android-star"></i><span><?php echo $average_rating; ?></span> / 10
+                            </p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
 </div>

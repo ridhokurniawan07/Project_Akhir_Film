@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 07 Des 2023 pada 05.41
--- Versi server: 10.4.28-MariaDB
--- Versi PHP: 8.0.28
+-- Host: localhost
+-- Generation Time: Dec 14, 2023 at 12:38 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_actor`
+-- Table structure for table `tb_actor`
 --
 
 CREATE TABLE `tb_actor` (
@@ -34,10 +34,10 @@ CREATE TABLE `tb_actor` (
   `country` varchar(100) NOT NULL,
   `actor_description` text NOT NULL,
   `foto` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_actor`
+-- Dumping data for table `tb_actor`
 --
 
 INSERT INTO `tb_actor` (`actor_id`, `name_actor`, `birth_date`, `country`, `actor_description`, `foto`) VALUES
@@ -56,7 +56,7 @@ INSERT INTO `tb_actor` (`actor_id`, `name_actor`, `birth_date`, `country`, `acto
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_film`
+-- Table structure for table `tb_film`
 --
 
 CREATE TABLE `tb_film` (
@@ -65,34 +65,35 @@ CREATE TABLE `tb_film` (
   `film_name` varchar(100) NOT NULL,
   `film_release` date NOT NULL,
   `film_description` text NOT NULL,
-  `film_image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `film_image` varchar(100) NOT NULL,
+  `visited_counter` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_film`
+-- Dumping data for table `tb_film`
 --
 
-INSERT INTO `tb_film` (`film_id`, `genre_id`, `film_name`, `film_release`, `film_description`, `film_image`) VALUES
-(11, 8, 'Gampang Cuan', '2023-12-06', 'Di tengah kesulitan finansial keluarga yang tak kunjung usai, Sultan (Vino G Bastian) dan adik perempuannya, Bilqis (Anya Geraldine), harus mengatasi warisan utang mendiang ayah mereka sebesar 300 juta.', 'gampangcuan.jpg'),
-(12, 4, 'Budi Pekerti', '2023-12-06', 'Bu Prani (Ine Febriyanti), seorang guru BK yang video perselisihannya dengan penguniung pasar meniadi viral di media sosial. Akibat tindakannya yang dinilai tidak mencerminkan pribadi seorang guru, ia dan keluarganya Muklas (Angga Yunanda), Tita (Prilly Latuconsina), dan Pak Didit (Dwi Sasono) mendapat perundungan, dicari-cari kesalahan lainnya hingga terancam kehilangan pekerjaan.', 'budipekerti.jpg'),
-(14, 7, '172 days', '2023-11-23', '172 hari yang indah untuk Zira (Yasmin Napper), dan berkesan sepanjang hidupnya. Menikah dengan putra ustadz legendaris Arifin Ilham, Amer Azzikra (Bryan Domani), yang telah membuat Zira menjadi pribadi yang lebih baik. Namun Amer pergi terlalu cepat. \"Aku ikhlas, namun aku rindu!\"', '172 days.jpg'),
-(15, 6, 'Sijjin', '2023-12-22', 'Irma (Anggika Bolsterli) jatuh cinta pada Galang (Ibrahim Risyad), sepupunya yang sudah beristri dan punya anak. Namun Irma masih terobsesi dan ingin menjadi perempuan satu-satunya di hidup Galang. Irma datang ke dukun untuk mengirim santet pada istri Galang. Sejak saat itu teror dimulai. Gangguan mistis, kesurupan, dan kematian terjadi di rumah Galang. Namun, yang tak diduga Irma, ancaman itu juga mengincar nyawanya sendiri.', 'sijjin.jpg'),
-(16, 6, 'Qorin', '2023-12-22', 'Zahra (Zulfa Maharani), siswi tingkat tiga sekolah asrama Rodiatul Jannah, selalu menjadi siswi teladan yang memiliki segudang prestasi di sekolah. Zahra rela menuruti apapun perintah Ustad Jaelani (Omar Daniel), gurunya, demi mendapatkan nilai. Termasuk tugas untuk menjaga seorang siswi baru yang terkenal nakal bernama Yolanda (Aghniny Haque), dan tugas mengajak para siswi melakukan ritual Qorin. Setelah menjalani kedua tugas itu, Zahra mulai mendapatkan terror dan hal-hal mistis.', 'qorin.jpg'),
-(17, 9, 'Serigala Terakhir', '2023-12-14', 'Jarot dan Ale adalah teman baik, tumbuh bersama sejak kecil. Keduanya memiliki banyak kesamaan, tapi tidak dengan karakter. Mereka membentuk geng Serigala Terakhir, dan bermimpi menjadi mafia terbesar.', 'Poster-serigala-terakhir.jpg');
+INSERT INTO `tb_film` (`film_id`, `genre_id`, `film_name`, `film_release`, `film_description`, `film_image`, `visited_counter`) VALUES
+(11, 8, 'Gampang Cuan', '2023-12-06', 'Di tengah kesulitan finansial keluarga yang tak kunjung usai, Sultan (Vino G Bastian) dan adik perempuannya, Bilqis (Anya Geraldine), harus mengatasi warisan utang mendiang ayah mereka sebesar 300 juta.', 'gampangcuan.jpg', 17),
+(12, 4, 'Budi Pekerti', '2023-12-06', 'Bu Prani (Ine Febriyanti), seorang guru BK yang video perselisihannya dengan penguniung pasar meniadi viral di media sosial. Akibat tindakannya yang dinilai tidak mencerminkan pribadi seorang guru, ia dan keluarganya Muklas (Angga Yunanda), Tita (Prilly Latuconsina), dan Pak Didit (Dwi Sasono) mendapat perundungan, dicari-cari kesalahan lainnya hingga terancam kehilangan pekerjaan.', 'budipekerti.jpg', 2),
+(14, 7, '172 days', '2023-11-23', '172 hari yang indah untuk Zira (Yasmin Napper), dan berkesan sepanjang hidupnya. Menikah dengan putra ustadz legendaris Arifin Ilham, Amer Azzikra (Bryan Domani), yang telah membuat Zira menjadi pribadi yang lebih baik. Namun Amer pergi terlalu cepat. \"Aku ikhlas, namun aku rindu!\"', '172 days.jpg', 0),
+(15, 6, 'Sijjin', '2023-12-22', 'Irma (Anggika Bolsterli) jatuh cinta pada Galang (Ibrahim Risyad), sepupunya yang sudah beristri dan punya anak. Namun Irma masih terobsesi dan ingin menjadi perempuan satu-satunya di hidup Galang. Irma datang ke dukun untuk mengirim santet pada istri Galang. Sejak saat itu teror dimulai. Gangguan mistis, kesurupan, dan kematian terjadi di rumah Galang. Namun, yang tak diduga Irma, ancaman itu juga mengincar nyawanya sendiri.', 'sijjin.jpg', 0),
+(16, 6, 'Qorin', '2023-12-22', 'Zahra (Zulfa Maharani), siswi tingkat tiga sekolah asrama Rodiatul Jannah, selalu menjadi siswi teladan yang memiliki segudang prestasi di sekolah. Zahra rela menuruti apapun perintah Ustad Jaelani (Omar Daniel), gurunya, demi mendapatkan nilai. Termasuk tugas untuk menjaga seorang siswi baru yang terkenal nakal bernama Yolanda (Aghniny Haque), dan tugas mengajak para siswi melakukan ritual Qorin. Setelah menjalani kedua tugas itu, Zahra mulai mendapatkan terror dan hal-hal mistis.', 'qorin.jpg', 0),
+(17, 9, 'Serigala Terakhir', '2023-12-14', 'Jarot dan Ale adalah teman baik, tumbuh bersama sejak kecil. Keduanya memiliki banyak kesamaan, tapi tidak dengan karakter. Mereka membentuk geng Serigala Terakhir, dan bermimpi menjadi mafia terbesar.', 'Poster-serigala-terakhir.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_film_actor`
+-- Table structure for table `tb_film_actor`
 --
 
 CREATE TABLE `tb_film_actor` (
   `film_id` int(11) NOT NULL,
   `actor_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_film_actor`
+-- Dumping data for table `tb_film_actor`
 --
 
 INSERT INTO `tb_film_actor` (`film_id`, `actor_id`) VALUES
@@ -113,16 +114,16 @@ INSERT INTO `tb_film_actor` (`film_id`, `actor_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_genre`
+-- Table structure for table `tb_genre`
 --
 
 CREATE TABLE `tb_genre` (
   `genre_id` int(11) NOT NULL,
   `genre_name` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_genre`
+-- Dumping data for table `tb_genre`
 --
 
 INSERT INTO `tb_genre` (`genre_id`, `genre_name`) VALUES
@@ -135,7 +136,7 @@ INSERT INTO `tb_genre` (`genre_id`, `genre_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_review`
+-- Table structure for table `tb_review`
 --
 
 CREATE TABLE `tb_review` (
@@ -146,20 +147,20 @@ CREATE TABLE `tb_review` (
   `review` text NOT NULL,
   `rating` decimal(50,0) NOT NULL,
   `tanggal` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_review`
+-- Dumping data for table `tb_review`
 --
 
 INSERT INTO `tb_review` (`review_id`, `film_id`, `user_id`, `review_title`, `review`, `rating`, `tanggal`) VALUES
-(3, 14, 4, 'bella', 'baguss', 7, '2023-12-06'),
-(12, 11, 4, 'bella', 'bagus', 9, '2023-12-07');
+(12, 11, 4, 'bella', 'bagus', '9', '2023-12-07'),
+(13, 12, 5, 'Tes', 'Mantap', '6', '2023-12-10');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tb_user`
+-- Table structure for table `tb_user`
 --
 
 CREATE TABLE `tb_user` (
@@ -170,10 +171,10 @@ CREATE TABLE `tb_user` (
   `password` varchar(100) NOT NULL,
   `role` enum('admin','user') NOT NULL,
   `email` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tb_user`
+-- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`user_id`, `name`, `gambar`, `username`, `password`, `role`, `email`) VALUES
@@ -188,33 +189,33 @@ INSERT INTO `tb_user` (`user_id`, `name`, `gambar`, `username`, `password`, `rol
 --
 
 --
--- Indeks untuk tabel `tb_actor`
+-- Indexes for table `tb_actor`
 --
 ALTER TABLE `tb_actor`
   ADD PRIMARY KEY (`actor_id`);
 
 --
--- Indeks untuk tabel `tb_film`
+-- Indexes for table `tb_film`
 --
 ALTER TABLE `tb_film`
   ADD PRIMARY KEY (`film_id`),
   ADD KEY `fk_filmgenre` (`genre_id`);
 
 --
--- Indeks untuk tabel `tb_film_actor`
+-- Indexes for table `tb_film_actor`
 --
 ALTER TABLE `tb_film_actor`
   ADD PRIMARY KEY (`film_id`,`actor_id`),
   ADD KEY `actor_id` (`actor_id`);
 
 --
--- Indeks untuk tabel `tb_genre`
+-- Indexes for table `tb_genre`
 --
 ALTER TABLE `tb_genre`
   ADD PRIMARY KEY (`genre_id`);
 
 --
--- Indeks untuk tabel `tb_review`
+-- Indexes for table `tb_review`
 --
 ALTER TABLE `tb_review`
   ADD PRIMARY KEY (`review_id`),
@@ -222,64 +223,64 @@ ALTER TABLE `tb_review`
   ADD KEY `fk_reviewfilm` (`film_id`);
 
 --
--- Indeks untuk tabel `tb_user`
+-- Indexes for table `tb_user`
 --
 ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tb_actor`
+-- AUTO_INCREMENT for table `tb_actor`
 --
 ALTER TABLE `tb_actor`
   MODIFY `actor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_film`
+-- AUTO_INCREMENT for table `tb_film`
 --
 ALTER TABLE `tb_film`
   MODIFY `film_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_genre`
+-- AUTO_INCREMENT for table `tb_genre`
 --
 ALTER TABLE `tb_genre`
   MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_review`
+-- AUTO_INCREMENT for table `tb_review`
 --
 ALTER TABLE `tb_review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT untuk tabel `tb_user`
+-- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `tb_film`
+-- Constraints for table `tb_film`
 --
 ALTER TABLE `tb_film`
   ADD CONSTRAINT `fk_filmgenre` FOREIGN KEY (`genre_id`) REFERENCES `tb_genre` (`genre_id`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_film_actor`
+-- Constraints for table `tb_film_actor`
 --
 ALTER TABLE `tb_film_actor`
   ADD CONSTRAINT `tb_film_actor_ibfk_1` FOREIGN KEY (`film_id`) REFERENCES `tb_film` (`film_id`),
   ADD CONSTRAINT `tb_film_actor_ibfk_2` FOREIGN KEY (`actor_id`) REFERENCES `tb_actor` (`actor_id`);
 
 --
--- Ketidakleluasaan untuk tabel `tb_review`
+-- Constraints for table `tb_review`
 --
 ALTER TABLE `tb_review`
   ADD CONSTRAINT `fk_reviewfilm` FOREIGN KEY (`film_id`) REFERENCES `tb_film` (`film_id`),
