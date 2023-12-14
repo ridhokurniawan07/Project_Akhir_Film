@@ -7,7 +7,7 @@ class AuthModel
 	{
 		session_start();
 
-		if (isset($_SESSION['is_user_login'])) {
+		if ($_SESSION['is_login'] && $_SESSION['role'] == 'user') {
 			return true;
 		} else {
 			return false;
@@ -18,10 +18,9 @@ class AuthModel
 	{
 		session_start();
 
-		if (isset($_SESSION['is_admin_login'])) {
-			return true;
-		} else {
-			return false;
+		if (!$_SESSION['is_login'] || $_SESSION['role'] != 'admin') {
+			var_dump('masuk');
+			header('Location: index.php');
 		}
 	}
 
@@ -37,27 +36,19 @@ class AuthModel
 		}
 	}
 
-	public function requestLogin($username, $password, $role)
+	public function requestLogin($username, $password)
 	{
-		if ($role == 'admin') {
-			session_start();
-		}
-		
 		$dBConnect = new DBConnect();
-		$dataSql = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE username='$username' AND password='$password' AND role='$role'");
+		$dataSql = mysqli_query($dBConnect->connect, "SELECT * FROM tb_user WHERE username='$username' AND password='$password'");
 		$data = $dataSql->fetch_array();
 
 		if ($username == $data['username'] and $password == $data['password']) {
 			$_SESSION['user_id'] 	= $data['user_id'];
 			$_SESSION['name'] 		= $data['name'];
 			$_SESSION['username']   = $data['username'];
-
-			if ($role == 'admin') {
-				$_SESSION['is_admin_login'] = true;
-			} else {
-				$_SESSION['is_user_login'] = true;
-			}
-			return true;
+			$_SESSION['role']		= $data['role'];
+			$_SESSION['is_login'] 	= true;
+			return TRUE;
 		} else {
 			return false;
 		}
@@ -74,13 +65,9 @@ class AuthModel
 		}
 	}
 
-	public function requestLogout($role)
+	public function requestLogout()
 	{
-		if ($role == 'admin') {
-			unset($_SESSION['is_admin_login']);
-		} else {
-			unset($_SESSION['is_user_login']);
-		}
+		session_destroy();
 		return true;
 	}
 }

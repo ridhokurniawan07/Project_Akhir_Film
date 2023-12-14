@@ -18,7 +18,6 @@ $movie_id = $_GET['film_id'];
 $sql = "SELECT * FROM tb_film WHERE film_id = $movie_id";
 $result = $conn->query($sql);
 
-
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $film_name = $row['film_name'];
@@ -67,9 +66,9 @@ if ($result->num_rows > 0) {
     <div class="container">
         <div class="row ipad-width2">
             <div class="col-md-4 col-sm-12 col-xs-12">
-                <div class="movie-img sticky-sb" style="width: 122%;">
+                <div class="movie-img sticky-sb">
                     <img src="images/film/<?php echo $row['film_image']; ?>" alt="" />
-                    <div class="movie-btn" style="width: 80%;">
+                    <div class="movie-btn">
                         <div class="btn-transform transform-vertical red">
                             <div>
                                 <a href="#" class="item item-1 redbtn">
