@@ -97,6 +97,9 @@ $total_pages = ceil($total_movies / $movies_per_page);
                                 <p class="rate">
                                     <i class="ion-android-star"></i><span><?php echo $average_rating; ?></span> / 10
                                 </p>
+                                <p class="view-count">
+                                    <i class="far fa-eye"></i> <?php echo $row['visited_counter']; ?> views
+                                </p>
                             </div>
                         </div>
                     <?php } ?>
