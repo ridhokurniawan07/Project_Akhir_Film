@@ -81,7 +81,7 @@ ob_end_flush();
                 </div>
             </div>
             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-            <form action="" method="POST">
+            <form action="validate.php" method="POST">
             <div class="g-recaptcha" data-sitekey="6LfLjzApAAAAAMiTYui3QLvHzPf43IbXCVA_RmWO"></div>
             <br/>
             <div class="row">
@@ -97,6 +97,3 @@ ob_end_flush();
         </div>
     </div>
 </div>
-
-<!-- Include reCAPTCHA script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
